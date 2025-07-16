@@ -10,6 +10,8 @@
       --dark: #2c3e50;
       --light: #f8f9fa;
       --gray: #888;
+      --details-bg: #f0f4f8;
+      --details-title: #333;
     }
 
     body {
@@ -40,6 +42,13 @@
       gap: 15px;
     }
 
+    .logo {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
     .header-text h1 {
       margin: 0;
       font-size: 1.6rem;
@@ -66,7 +75,7 @@
 
     main {
       max-width: 1200px;
-      margin: 40px auto;
+      margin: 60px auto;
       padding: 0 20px;
       display: flex;
       gap: 40px;
@@ -76,10 +85,14 @@
     .carousel {
       flex: 1 1 500px;
       position: relative;
-      background: black;
-      border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 12px;
       overflow: hidden;
       aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .carousel-slide {
@@ -126,15 +139,16 @@
 
     .details {
       flex: 1 1 400px;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      background: var(--details-bg);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
     }
 
     .details h2 {
-      color: var(--primary);
+      color: var(--details-title);
       margin-top: 0;
+      font-size: 1.5rem;
     }
 
     .details ul {
@@ -143,7 +157,7 @@
     }
 
     .details li {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       font-size: 1rem;
     }
 
@@ -174,6 +188,7 @@
   <header>
     <div class="header-container">
       <div class="header-left">
+        <img src="logo.jpg" alt="Logo" class="logo" />
         <div class="header-text">
           <h1>4BR Downtown Apartment for Rent</h1>
           <p>$2,400/month – Grand Rapids, MI</p>
@@ -247,3 +262,4 @@
   </script>
 </body>
 </html>
+
