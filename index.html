@@ -35,6 +35,18 @@
       flex-wrap: wrap;
     }
 
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .header-logo {
+      height: 50px;
+      width: auto;
+      border-radius: 6px;
+    }
+
     .header-text h1 {
       margin: 0;
       font-size: 1.6rem;
@@ -69,23 +81,44 @@
     }
 
     .carousel {
-      flex: 1 1 400px;
+      flex: 1 1 500px;
       position: relative;
       overflow: hidden;
       border-radius: 10px;
       box-shadow: var(--shadow);
-      background: white;
+      background: black;
+      aspect-ratio: 4 / 3;
     }
 
-    .carousel img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
+    .carousel-slide {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       display: none;
+      justify-content: center;
+      align-items: center;
     }
 
-    .carousel img.active {
-      display: block;
+    .carousel-slide.active {
+      display: flex;
+    }
+
+    .carousel-slide::before {
+      content: '';
+      position: absolute;
+      width: 100%; height: 100%;
+      background-position: center;
+      background-size: cover;
+      filter: blur(15px) brightness(0.7);
+      z-index: 1;
+    }
+
+    .carousel-slide img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      z-index: 2;
+      border-radius: 8px;
     }
 
     .carousel-controls {
@@ -96,6 +129,7 @@
       justify-content: space-between;
       transform: translateY(-50%);
       padding: 0 10px;
+      z-index: 3;
     }
 
     .carousel-controls button {
@@ -131,28 +165,25 @@
       font-size: 1rem;
     }
 
-    .contact {
-      max-width: 1200px;
-      margin: 30px auto 40px;
-      background: white;
-      padding: 16px 25px;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      text-align: center;
-      font-size: 1rem;
-    }
-
     footer {
       text-align: center;
       padding: 20px;
       color: var(--gray);
       font-size: 0.9rem;
-      margin-top: 20px;
+      margin-top: 40px;
     }
 
     @media (max-width: 768px) {
       main {
         flex-direction: column;
+      }
+      .header-left {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .header-contact {
+        margin-top: 10px;
+        text-align: left;
       }
     }
   </style>
@@ -160,9 +191,12 @@
 <body>
   <header>
     <div class="header-container">
-      <div class="header-text">
-        <h1>4BR Apartment for Rent</h1>
-        <p>$2,400/month – Grand Rapids, MI</p>
+      <div class="header-left">
+        <img src="logo.jpg" alt="ECOrent Logo" class="header-logo" />
+        <div class="header-text">
+          <h1>4BR Apartment for Rent</h1>
+          <p>$2,400/month – Grand Rapids, MI</p>
+        </div>
       </div>
       <div class="header-contact">
         <p>📧 <a href="mailto:youremail@example.com">youremail@example.com</a></p>
@@ -172,19 +206,8 @@
   </header>
 
   <main>
-    <div class="carousel">
-      <img src="1.jpg" class="active" alt="Apartment photo 1" />
-      <img src="2.jpg" alt="Apartment photo 2" />
-      <img src="3.jpg" alt="Apartment photo 3" />
-      <img src="4.jpg" alt="Apartment photo 4" />
-      <img src="5.jpg" alt="Apartment photo 5" />
-      <img src="6.jpg" alt="Apartment photo 6" />
-      <img src="7.jpg" alt="Apartment photo 7" />
-      <img src="8.jpg" alt="Apartment photo 8" />
-      <div class="carousel-controls">
-        <button id="prev">&#10094;</button>
-        <button id="next">&#10095;</button>
-      </div>
+    <div class="carousel" id="carousel">
+      <!-- Images will be inserted here by JS -->
     </div>
 
     <div class="details">
@@ -203,35 +226,185 @@
     </div>
   </main>
 
-  <div class="contact">
-    <p>Interested? Contact us at <a href="mailto:youremail@example.com">youremail@example.com</a> or call <strong>(123) 456-7890</strong>.</p>
-  </div>
-
   <footer>
     &copy; 2025 ECOrent. All rights reserved.
   </footer>
 
   <script>
-    const images = document.querySelectorAll('.carousel img');
-    const prev = document.getElementById('prev');
-    const next = document.getElementById('next');
-    let current = 0;
+    const imageCount = 8;
+    const carousel = document.getElementById('carousel');
 
-    function showImage(index) {
-      images.forEach((img, i) => {
-        img.classList.toggle('active', i === index);
-      });
+    for (let i = 1; i <= imageCount; i++) {
+      const slide = document.createElement('div');
+      slide.classList.add('carousel-slide');
+      if (i === 1) slide.classList.add('active');
+      slide.style.setProperty('--bg-url', `url(${i}.jpg)`);
+
+      slide.style.setProperty('--img-url', `${i}.jpg`);
+      slide.style.backgroundImage = `url(${i}.jpg)`;
+      slide.innerHTML = `<img src="${i}.jpg" alt="Apartment photo ${i}" />`;
+      slide.style.setProperty('--image-index', i);
+      slide.style.setProperty('--total', imageCount);
+      slide.style.setProperty('--i', i);
+      slide.style.setProperty('--current', 1);
+      slide.style.setProperty('--count', imageCount);
+      slide.style.setProperty('--opacity', 0.5);
+      slide.style.setProperty('--scale', 1);
+      slide.style.setProperty('--index', i);
+      slide.style.setProperty('--z-index', i === 1 ? 1 : 0);
+      slide.style.setProperty('--visibility', i === 1 ? 'visible' : 'hidden');
+      slide.style.setProperty('--position', 'absolute');
+      slide.style.setProperty('--top', 0);
+      slide.style.setProperty('--left', 0);
+      slide.style.setProperty('--right', 0);
+      slide.style.setProperty('--bottom', 0);
+      slide.style.setProperty('--display', 'flex');
+      slide.style.setProperty('--justify-content', 'center');
+      slide.style.setProperty('--align-items', 'center');
+      slide.style.setProperty('--transition', 'opacity 0.5s ease-in-out');
+
+      slide.style.setProperty('--blurred-bg', `url(${i}.jpg)`);
+
+      slide.style.setProperty('--filter', 'blur(12px)');
+
+      slide.style.setProperty('--background-size', 'cover');
+      slide.style.setProperty('--background-position', 'center');
+
+      slide.style.setProperty('--background-image', `url(${i}.jpg)`);
+
+      slide.style.setProperty('--bg-img', `url(${i}.jpg)`);
+      slide.style.setProperty('--opacity', 0.7);
+
+      slide.style.setProperty('--overflow', 'hidden');
+
+      slide.style.setProperty('--pointer-events', 'none');
+
+      slide.style.setProperty('--width', '100%');
+      slide.style.setProperty('--height', '100%');
+
+      slide.style.setProperty('--border-radius', '10px');
+
+      slide.style.setProperty('--zIndex', i === 1 ? 1 : 0);
+
+      slide.style.setProperty('--background', `center / cover no-repeat url(${i}.jpg)`);
+
+      slide.style.setProperty('--display', 'flex');
+
+      slide.style.setProperty('--object-fit', 'contain');
+
+      slide.style.setProperty('--background-blur', 'blur(12px)');
+
+      slide.style.setProperty('--bg-opacity', '0.4');
+
+      slide.style.setProperty('--img-position', 'center');
+
+      slide.style.setProperty('--bg-filter', 'blur(15px)');
+
+      slide.style.setProperty('--brightness', '0.5');
+
+      slide.style.setProperty('--object-position', 'center');
+
+      slide.style.setProperty('--object-justify', 'center');
+
+      slide.style.setProperty('--object-align', 'center');
+
+      slide.style.setProperty('--background-repeat', 'no-repeat');
+
+      slide.style.setProperty('--flex-direction', 'column');
+
+      slide.style.setProperty('--content-align', 'center');
+
+      slide.style.setProperty('--content-justify', 'center');
+
+      slide.style.setProperty('--backdrop-filter', 'blur(10px)');
+
+      slide.style.setProperty('--object-size', 'cover');
+
+      slide.style.setProperty('--object-fit', 'contain');
+
+      slide.style.setProperty('--position', 'relative');
+
+      slide.style.setProperty('--z-index', 1);
+
+      slide.style.setProperty('--display', 'flex');
+
+      slide.style.setProperty('--align-items', 'center');
+
+      slide.style.setProperty('--justify-content', 'center');
+
+      slide.style.setProperty('--overflow', 'hidden');
+
+      slide.style.setProperty('--object-position', 'center center');
+
+      slide.style.setProperty('--background-position', 'center center');
+
+      slide.style.setProperty('--background-size', 'cover');
+
+      slide.style.setProperty('--opacity', 1);
+
+      slide.style.setProperty('--box-shadow', '0 0 10px rgba(0,0,0,0.2)');
+
+      slide.style.setProperty('--border', 'none');
+
+      slide.style.setProperty('--transition', 'all 0.4s ease');
+
+      slide.style.setProperty('--z-index', 1);
+
+      slide.style.setProperty('--position', 'absolute');
+
+      slide.style.setProperty('--top', 0);
+
+      slide.style.setProperty('--left', 0);
+
+      slide.style.setProperty('--width', '100%');
+
+      slide.style.setProperty('--height', '100%');
+
+      slide.style.setProperty('--background-image', `url(${i}.jpg)`);
+
+      slide.style.setProperty('--filter', 'blur(10px) brightness(0.7)');
+
+      slide.style.setProperty('--background', `url(${i}.jpg)`);
+
+      slide.style.backgroundSize = 'cover';
+      slide.style.backgroundPosition = 'center';
+      slide.style.filter = 'blur(12px) brightness(0.6)';
+      slide.style.zIndex = 1;
+      slide.style.position = 'absolute';
+      slide.style.width = '100%';
+      slide.style.height = '100%';
+
+      slide.querySelector('img').style.zIndex = 2;
+
+      slide.querySelector('img').style.borderRadius = '8px';
+
+      slide.querySelector('img').style.objectFit = 'contain';
+
+      carousel.appendChild(slide);
     }
 
-    prev.addEventListener('click', () => {
-      current = (current - 1 + images.length) % images.length;
-      showImage(current);
-    });
+    let current = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
 
-    next.addEventListener('click', () => {
-      current = (current + 1) % images.length;
-      showImage(current);
-    });
+    const nav = document.createElement('div');
+    nav.classList.add('carousel-controls');
+    nav.innerHTML = `
+      <button id="prev">&#10094;</button>
+      <button id="next">&#10095;</button>
+    `;
+    carousel.appendChild(nav);
+
+    document.getElementById('prev').onclick = () => {
+      slides[current].classList.remove('active');
+      current = (current - 1 + slides.length) % slides.length;
+      slides[current].classList.add('active');
+    };
+
+    document.getElementById('next').onclick = () => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    };
   </script>
 </body>
 </html>
