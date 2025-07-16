@@ -10,6 +10,7 @@
       --dark: #2c3e50;
       --light: #f8f9fa;
       --gray: #888;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     }
 
     * {
@@ -26,37 +27,48 @@
     header {
       background: var(--dark);
       color: white;
-      padding: 25px 20px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    header p {
-      font-size: 1.1rem;
-      margin-top: 10px;
-    }
-
-    .container {
+      padding: 20px 20px;
       display: flex;
-      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    .header-text {
+      text-align: right;
+    }
+
+    .header-text h1 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+
+    .header-text p {
+      margin: 5px 0 0;
+      font-size: 1rem;
+    }
+
+    .main-wrapper {
       max-width: 1200px;
       margin: 40px auto;
-      gap: 30px;
       padding: 0 20px;
     }
 
+    .content {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
     .slideshow-container {
-      flex: 1;
-      max-width: 600px;
+      flex: 1 1 500px;
       position: relative;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow);
     }
 
     .mySlides {
@@ -76,50 +88,72 @@
       top: 50%;
       transform: translateY(-50%);
       padding: 12px;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.4);
       color: white;
-      font-size: 24px;
+      font-size: 22px;
       border: none;
       border-radius: 50%;
-      z-index: 1;
+      z-index: 2;
     }
 
     .prev { left: 10px; }
     .next { right: 10px; }
 
     .info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 30px;
-    }
-
-    .details, .contact {
-      background: #fff;
+      flex: 1 1 400px;
+      background: white;
       padding: 25px 30px;
       border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      box-shadow: var(--shadow);
     }
 
-    .details h2, .contact h2 {
+    .info h2 {
       color: var(--primary);
-      margin-top: 0;
       font-size: 1.5rem;
+      margin-top: 0;
     }
 
-    .details ul {
+    .info ul {
       list-style: none;
       padding: 0;
       font-size: 1.05rem;
     }
 
-    .details li {
+    .info li {
       margin-bottom: 10px;
     }
 
+    .info .address {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info .address::before {
+      content: "📍";
+    }
+
+    .contact {
+      margin-top: 50px;
+      background: white;
+      padding: 35px 30px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .contact h2 {
+      color: var(--primary);
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+    }
+
     .contact p {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
+      margin: 10px 0;
     }
 
     .contact a {
@@ -137,44 +171,56 @@
       padding: 20px;
       color: var(--gray);
       font-size: 0.9rem;
-      margin-top: 50px;
+      margin-top: 40px;
     }
 
-    /* Responsive for smaller screens */
     @media (max-width: 900px) {
-      .container {
+      .content {
         flex-direction: column;
       }
 
       .mySlides img {
         height: 300px;
       }
+
+      .header-text {
+        text-align: left;
+        margin-top: 10px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>4BR Apartment for Rent</h1>
-    <p>$2,400/month – Grand Rapids, MI</p>
+    <img src="ecorent-logo.jpg" alt="ECOrent Logo" />
+    <div class="header-text">
+      <h1>4BR Apartment for Rent</h1>
+      <p>$2,400/month – Grand Rapids, MI</p>
+    </div>
   </header>
 
-  <main class="container">
-    <div class="slideshow-container">
-      <div class="mySlides"><img src="1.jpg" alt="Photo 1"></div>
-      <div class="mySlides"><img src="2.jpg" alt="Photo 2"></div>
-      <div class="mySlides"><img src="3.jpg" alt="Photo 3"></div>
-      <div class="mySlides"><img src="4.jpg" alt="Photo 4"></div>
-      <div class="mySlides"><img src="5.jpg" alt="Photo 5"></div>
-      <div class="mySlides"><img src="6.jpg" alt="Photo 6"></div>
-      <div class="mySlides"><img src="7.jpg" alt="Photo 7"></div>
-      <div class="mySlides"><img src="8.jpg" alt="Photo 8"></div>
+  <main class="main-wrapper">
+    <div class="content">
+      <div class="slideshow-container">
+        <div class="mySlides"><img src="1.jpg" alt="Photo 1"></div>
+        <div class="mySlides"><img src="2.jpg" alt="Photo 2"></div>
+        <div class="mySlides"><img src="3.jpg" alt="Photo 3"></div>
+        <div class="mySlides"><img src="4.jpg" alt="Photo 4"></div>
+        <div class="mySlides"><img src="5.jpg" alt="Photo 5"></div>
+        <div class="mySlides"><img src="6.jpg" alt="Photo 6"></div>
+        <div class="mySlides"><img src="7.jpg" alt="Photo 7"></div>
+        <div class="mySlides"><img src="8.jpg" alt="Photo 8"></div>
 
-      <button class="prev" onclick="plusSlides(-1)">❮</button>
-      <button class="next" onclick="plusSlides(1)">❯</button>
-    </div>
+        <button class="prev" onclick="plusSlides(-1)">❮</button>
+        <button class="next" onclick="plusSlides(1)">❯</button>
+      </div>
 
-    <div class="info">
-      <div class="details">
+      <div class="info">
         <h2>Apartment Features</h2>
         <ul>
           <li>🛏 4 Bedrooms</li>
@@ -183,18 +229,18 @@
           <li>💧 Water, trash & lawn care included</li>
           <li>🐶 Pet-friendly (with approval)</li>
           <li>🌳 Spacious backyard</li>
-          <li>📍 Near shopping, parks, and restaurants</li>
-          <li>🅿️ Off-street parking available</li>
+          <li>🅿️ Off-street parking</li>
+          <li>🛒 Minutes to shops, restaurants & parks</li>
         </ul>
+        <div class="address">135 Straight NW, Grand Rapids, MI</div>
       </div>
+    </div>
 
-      <div class="contact">
-        <h2>Contact</h2>
-        <p>Interested in a showing? Email:  
-          <a href="mailto:youremail@example.com">youremail@example.com</a>
-        </p>
-        <p><strong>ECOrent – Reliable Rentals in Grand Rapids</strong></p>
-      </div>
+    <div class="contact">
+      <h2>Contact</h2>
+      <p>Interested in a showing? Email:</p>
+      <p><a href="mailto:youremail@example.com">youremail@example.com</a></p>
+      <p><strong>ECOrent – Trusted Rentals in Grand Rapids</strong></p>
     </div>
   </main>
 
