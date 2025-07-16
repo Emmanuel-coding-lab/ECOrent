@@ -104,8 +104,16 @@
       display: flex;
     }
 
-    .carousel-slide::before {
-      content: '';
+    .carousel-slide img {
+      position: relative;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+      z-index: 1;
+    }
+
+    .blur-bg {
       position: absolute;
       top: 0; left: 0;
       width: 100%;
@@ -115,15 +123,6 @@
       filter: blur(20px);
       transform: scale(1.1);
       z-index: 0;
-    }
-
-    .carousel-slide img {
-      position: relative;
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      border-radius: 8px;
-      z-index: 1;
     }
 
     .carousel-controls {
@@ -289,28 +288,15 @@
       const slide = document.createElement('div');
       slide.classList.add('carousel-slide');
       if (i === 1) slide.classList.add('active');
-      slide.innerHTML = `<img src="${i}.jpg" alt="Apartment photo ${i}" />`;
-      slide.style.setProperty('--bg-url', `url(${i}.jpg)`);
-      slide.style.backgroundImage = `url(${i}.jpg)`;
-      slide.querySelector('::before')?.style?.setProperty?.('background-image', `url(${i}.jpg)`);
+
+      slide.innerHTML = `
+        <div class="blur-bg" style="background-image: url('${i}.jpg');"></div>
+        <img src="${i}.jpg" alt="Apartment photo ${i}" />
+      `;
       carousel.appendChild(slide);
     }
 
     const slides = document.querySelectorAll('.carousel-slide');
-    slides.forEach(slide => {
-      const img = slide.querySelector('img');
-      img.addEventListener('load', () => {
-        slide.style.setProperty('--bg-url', `url(${img.src})`);
-        slide.style.setProperty('--bg-image', `url(${img.src})`);
-        slide.style.backgroundImage = `url(${img.src})`;
-        slide.style.backgroundSize = 'cover';
-        slide.style.backgroundPosition = 'center';
-        slide.style.backgroundRepeat = 'no-repeat';
-        slide.querySelector('::before')?.style?.setProperty?.('background-image', `url(${img.src})`);
-      });
-      slide.style.setProperty('--bg-url', `url(${img.src})`);
-    });
-
     let current = 0;
 
     const nav = document.createElement('div');
