@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2BR Apartment for Rent – Knapp's Corner</title>
+  <title>4BR Luxury Apartment – Knapp's Corner</title>
   <style>
     :root {
       --primary: #2ecc71;
@@ -11,64 +11,117 @@
       --light: #f8f9fa;
       --gray: #888;
     }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: var(--light);
       color: var(--dark);
     }
+
     header {
       background: var(--dark);
       color: white;
       padding: 30px 20px;
       text-align: center;
     }
+
     header h1 {
       margin: 0;
-      font-size: 2.2rem;
+      font-size: 2.4rem;
     }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
     main {
       max-width: 900px;
       margin: 40px auto;
       padding: 0 20px;
     }
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
+
+    /* Slideshow */
+    .slideshow-container {
+      position: relative;
+      max-width: 100%;
       margin-bottom: 30px;
-    }
-    .gallery img {
-      width: 100%;
-      max-width: 280px;
-      border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
     }
-    .details {
-      margin-bottom: 30px;
+
+    .mySlides {
+      display: none;
     }
+
+    .mySlides img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      margin-top: -22px;
+      padding: 12px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 0 3px 3px 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      user-select: none;
+      transition: 0.3s;
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
     .details h2 {
       color: var(--primary);
       margin-bottom: 10px;
     }
+
     .details ul {
       list-style: none;
       padding-left: 0;
+      font-size: 1.1rem;
     }
+
     .details li {
       margin-bottom: 8px;
     }
+
     .contact {
       background: #fff;
-      padding: 20px;
+      padding: 25px;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
+
+    .contact h2 {
+      margin-top: 0;
+    }
+
     .contact a {
       color: var(--primary);
       text-decoration: none;
       font-weight: bold;
     }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -80,35 +133,70 @@
 </head>
 <body>
   <header>
-    <h1>2BR Apartment for Rent – Knapp's Corner</h1>
-    <p>$1,200/month – Grand Rapids, MI</p>
+    <h1>4BR Luxury Apartment – Knapp's Corner</h1>
+    <p>$2,400/month – Grand Rapids, MI</p>
   </header>
+
   <main>
-    <div class="gallery">
-      <img src="images/photo1.jpg" alt="Living room" />
-      <img src="images/photo2.jpg" alt="Kitchen" />
-      <img src="images/photo3.jpg" alt="Bedroom" />
+    <div class="slideshow-container">
+      <div class="mySlides"><img src="images/photo1.jpg" alt="Living room" /></div>
+      <div class="mySlides"><img src="images/photo2.jpg" alt="Modern kitchen" /></div>
+      <div class="mySlides"><img src="images/photo3.jpg" alt="Bedroom 1" /></div>
+      <div class="mySlides"><img src="images/photo4.jpg" alt="Bedroom 2" /></div>
+      <div class="mySlides"><img src="images/photo5.jpg" alt="Bathroom" /></div>
+      <div class="mySlides"><img src="images/photo6.jpg" alt="Closet or hallway" /></div>
+      <div class="mySlides"><img src="images/photo7.jpg" alt="Laundry room or amenities" /></div>
+      <div class="mySlides"><img src="images/photo8.jpg" alt="Outdoor view or complex" /></div>
+
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <a class="next" onclick="plusSlides(1)">❯</a>
     </div>
 
     <div class="details">
       <h2>Property Details</h2>
       <ul>
-        <li>🛏 2 Bedrooms</li>
+        <li>🛏 4 Bedrooms</li>
         <li>🛁 1 Bathroom</li>
-        <li>💧 Water & trash included</li>
-        <li>🐶 Pet-friendly</li>
+        <li>💧 Water, trash & lawn care included</li>
+        <li>🐶 Pet-friendly (with approval)</li>
         <li>🧺 In-unit washer & dryer</li>
-        <li>📍 5 mins from Meijer, Celebration Cinema, and more</li>
+        <li>🌳 Spacious backyard & peaceful neighborhood</li>
+        <li>📍 Prime location near Meijer, Celebration Cinema & dining</li>
+        <li>🅿️ Off-street parking available</li>
       </ul>
     </div>
 
     <div class="contact">
-      <h2>Interested?</h2>
-      <p>Contact me at: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+      <h2>Schedule a Tour</h2>
+      <p>We'd love to show you around! Reach out at:  
+        <a href="mailto:youremail@example.com">youremail@example.com</a>
+      </p>
+      <p><strong>ECOrent – Trusted Rentals in Grand Rapids</strong></p>
     </div>
   </main>
+
   <footer>
     &copy; 2025 ECOrent. All rights reserved.
   </footer>
+
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+      let i;
+      const slides = document.getElementsByClassName("mySlides");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex - 1].style.display = "block";
+    }
+  </script>
 </body>
 </html>
