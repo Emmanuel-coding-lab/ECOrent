@@ -11,7 +11,7 @@
       --light: #f8f9fa;
       --gray: #888;
       --details-bg: #f0f4f8;
-      --details-title: #14532d; /* dark green */
+      --details-title: #14532d;
     }
 
     body {
@@ -88,6 +88,8 @@
       border-radius: 12px;
       overflow: hidden;
       aspect-ratio: 4 / 3;
+      min-height: 300px;
+      background-color: #eee;
     }
 
     .carousel-slide {
@@ -186,10 +188,10 @@
       }
 
       .carousel {
-        flex: 1 1 100%;
+        width: 100%;
         height: auto;
-        max-height: 60vh;
-        aspect-ratio: auto;
+        aspect-ratio: unset;
+        min-height: 250px;
       }
 
       .carousel-slide img {
@@ -289,9 +291,11 @@
       slide.classList.add('carousel-slide');
       if (i === 1) slide.classList.add('active');
 
+      const imageURL = `${i}.jpg`; // or use external URLs for testing
+
       slide.innerHTML = `
-        <div class="blur-bg" style="background-image: url('${i}.jpg');"></div>
-        <img src="${i}.jpg" alt="Apartment photo ${i}" />
+        <div class="blur-bg" style="background-image: url('${imageURL}');"></div>
+        <img src="${imageURL}" alt="Apartment photo ${i}" />
       `;
       carousel.appendChild(slide);
     }
