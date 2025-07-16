@@ -2,24 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>4BR Apartment for Rent – Grand Rapids, MI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>4BR Apartment for Rent – Grand Rapids</title>
   <style>
     :root {
       --primary: #2ecc71;
       --dark: #2c3e50;
       --light: #f8f9fa;
       --gray: #888;
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    * {
-      box-sizing: border-box;
+      --shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background-color: var(--light);
       color: var(--dark);
     }
@@ -27,18 +23,16 @@
     header {
       background: var(--dark);
       color: white;
-      padding: 20px 20px;
+      padding: 16px 20px;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-    }
-
-    header img {
-      height: 50px;
-    }
-
-    .header-text {
-      text-align: right;
+      flex-wrap: wrap;
     }
 
     .header-text h1 {
@@ -47,123 +41,105 @@
     }
 
     .header-text p {
-      margin: 5px 0 0;
+      margin: 4px 0 0;
       font-size: 1rem;
     }
 
-    .main-wrapper {
+    .header-contact {
+      text-align: right;
+      font-size: 0.95rem;
+    }
+
+    .header-contact a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .header-contact a:hover {
+      text-decoration: underline;
+    }
+
+    main {
       max-width: 1200px;
       margin: 40px auto;
       padding: 0 20px;
-    }
-
-    .content {
       display: flex;
-      gap: 30px;
+      gap: 40px;
       flex-wrap: wrap;
     }
 
-    .slideshow-container {
-      flex: 1 1 500px;
+    .carousel {
+      flex: 1 1 400px;
       position: relative;
-      border-radius: 12px;
       overflow: hidden;
+      border-radius: 10px;
       box-shadow: var(--shadow);
+      background: white;
     }
 
-    .mySlides {
+    .carousel img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
       display: none;
     }
 
-    .mySlides img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      border-radius: 12px;
+    .carousel img.active {
+      display: block;
     }
 
-    .prev, .next {
-      cursor: pointer;
+    .carousel-controls {
       position: absolute;
       top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
       transform: translateY(-50%);
-      padding: 12px;
-      background-color: rgba(0, 0, 0, 0.4);
-      color: white;
-      font-size: 22px;
-      border: none;
-      border-radius: 50%;
-      z-index: 2;
+      padding: 0 10px;
     }
 
-    .prev { left: 10px; }
-    .next { right: 10px; }
+    .carousel-controls button {
+      background-color: rgba(0,0,0,0.4);
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 5px;
+    }
 
-    .info {
+    .details {
       flex: 1 1 400px;
       background: white;
-      padding: 25px 30px;
-      border-radius: 12px;
+      padding: 20px;
+      border-radius: 10px;
       box-shadow: var(--shadow);
     }
 
-    .info h2 {
+    .details h2 {
       color: var(--primary);
-      font-size: 1.5rem;
       margin-top: 0;
     }
 
-    .info ul {
+    .details ul {
       list-style: none;
-      padding: 0;
-      font-size: 1.05rem;
+      padding-left: 0;
     }
 
-    .info li {
+    .details li {
       margin-bottom: 10px;
-    }
-
-    .info .address {
-      margin-top: 20px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .info .address::before {
-      content: "📍";
+      font-size: 1rem;
     }
 
     .contact {
-      margin-top: 50px;
+      max-width: 1200px;
+      margin: 30px auto 40px;
       background: white;
-      padding: 35px 30px;
-      border-radius: 12px;
+      padding: 16px 25px;
+      border-radius: 10px;
       box-shadow: var(--shadow);
       text-align: center;
-    }
-
-    .contact h2 {
-      color: var(--primary);
-      font-size: 1.6rem;
-      margin-bottom: 15px;
-    }
-
-    .contact p {
-      font-size: 1.1rem;
-      margin: 10px 0;
-    }
-
-    .contact a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .contact a:hover {
-      text-decoration: underline;
+      font-size: 1rem;
     }
 
     footer {
@@ -171,103 +147,90 @@
       padding: 20px;
       color: var(--gray);
       font-size: 0.9rem;
-      margin-top: 40px;
+      margin-top: 20px;
     }
 
-    @media (max-width: 900px) {
-      .content {
+    @media (max-width: 768px) {
+      main {
         flex-direction: column;
-      }
-
-      .mySlides img {
-        height: 300px;
-      }
-
-      .header-text {
-        text-align: left;
-        margin-top: 10px;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="ecorent-logo.jpg" alt="ECOrent Logo" />
-    <div class="header-text">
-      <h1>4BR Apartment for Rent</h1>
-      <p>$2,400/month – Grand Rapids, MI</p>
+    <div class="header-container">
+      <div class="header-text">
+        <h1>4BR Apartment for Rent</h1>
+        <p>$2,400/month – Grand Rapids, MI</p>
+      </div>
+      <div class="header-contact">
+        <p>📧 <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+        <p>📞 <a href="tel:1234567890">(123) 456-7890</a></p>
+      </div>
     </div>
   </header>
 
-  <main class="main-wrapper">
-    <div class="content">
-      <div class="slideshow-container">
-        <div class="mySlides"><img src="1.jpg" alt="Photo 1"></div>
-        <div class="mySlides"><img src="2.jpg" alt="Photo 2"></div>
-        <div class="mySlides"><img src="3.jpg" alt="Photo 3"></div>
-        <div class="mySlides"><img src="4.jpg" alt="Photo 4"></div>
-        <div class="mySlides"><img src="5.jpg" alt="Photo 5"></div>
-        <div class="mySlides"><img src="6.jpg" alt="Photo 6"></div>
-        <div class="mySlides"><img src="7.jpg" alt="Photo 7"></div>
-        <div class="mySlides"><img src="8.jpg" alt="Photo 8"></div>
-
-        <button class="prev" onclick="plusSlides(-1)">❮</button>
-        <button class="next" onclick="plusSlides(1)">❯</button>
-      </div>
-
-      <div class="info">
-        <h2>Apartment Features</h2>
-        <ul>
-          <li>🛏 4 Bedrooms</li>
-          <li>🛁 1 Bathroom</li>
-          <li>🧺 In-unit washer & dryer</li>
-          <li>💧 Water, trash & lawn care included</li>
-          <li>🐶 Pet-friendly (with approval)</li>
-          <li>🌳 Spacious backyard</li>
-          <li>🅿️ Off-street parking</li>
-          <li>🛒 Minutes to shops, restaurants & parks</li>
-        </ul>
-        <div class="address">135 Straight NW, Grand Rapids, MI</div>
+  <main>
+    <div class="carousel">
+      <img src="1.jpg" class="active" alt="Apartment photo 1" />
+      <img src="2.jpg" alt="Apartment photo 2" />
+      <img src="3.jpg" alt="Apartment photo 3" />
+      <img src="4.jpg" alt="Apartment photo 4" />
+      <img src="5.jpg" alt="Apartment photo 5" />
+      <img src="6.jpg" alt="Apartment photo 6" />
+      <img src="7.jpg" alt="Apartment photo 7" />
+      <img src="8.jpg" alt="Apartment photo 8" />
+      <div class="carousel-controls">
+        <button id="prev">&#10094;</button>
+        <button id="next">&#10095;</button>
       </div>
     </div>
 
-    <div class="contact">
-      <h2>Contact</h2>
-      <p>Interested in a showing? Email:</p>
-      <p><a href="mailto:youremail@example.com">youremail@example.com</a></p>
-      <p><strong>ECOrent – Trusted Rentals in Grand Rapids</strong></p>
+    <div class="details">
+      <h2>Property Details</h2>
+      <ul>
+        <li>🛏 4 Bedrooms</li>
+        <li>🛁 1 Bathroom</li>
+        <li>💧 Water & trash included</li>
+        <li>🐶 Pet-friendly</li>
+        <li>🧺 In-unit washer & dryer</li>
+        <li>📍 135 Straight NW, Grand Rapids, MI</li>
+        <li>🛒 Close to Meijer, Celebration Cinema, restaurants & more</li>
+        <li>🚗 Parking available</li>
+        <li>📶 High-speed internet ready</li>
+      </ul>
     </div>
   </main>
+
+  <div class="contact">
+    <p>Interested? Contact us at <a href="mailto:youremail@example.com">youremail@example.com</a> or call <strong>(123) 456-7890</strong>.</p>
+  </div>
 
   <footer>
     &copy; 2025 ECOrent. All rights reserved.
   </footer>
 
   <script>
-    let slideIndex = 1;
-    showSlides(slideIndex);
+    const images = document.querySelectorAll('.carousel img');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    let current = 0;
 
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+      });
     }
 
-    function showSlides(n) {
-      const slides = document.getElementsByClassName("mySlides");
-      if (n > slides.length) { slideIndex = 1 }
-      if (n < 1) { slideIndex = slides.length }
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slides[slideIndex - 1].style.display = "block";
-    }
+    prev.addEventListener('click', () => {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
+    });
 
-    document.addEventListener("DOMContentLoaded", () => {
-      showSlides(slideIndex);
+    next.addEventListener('click', () => {
+      current = (current + 1) % images.length;
+      showImage(current);
     });
   </script>
 </body>
