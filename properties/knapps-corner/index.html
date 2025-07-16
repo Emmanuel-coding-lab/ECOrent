@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>4BR Luxury Apartment – Knapp's Corner</title>
+  <title>4BR Apartment for Rent – Grand Rapids, MI</title>
   <style>
     :root {
       --primary: #2ecc71;
@@ -28,7 +28,7 @@
 
     header h1 {
       margin: 0;
-      font-size: 2.4rem;
+      font-size: 2.2rem;
     }
 
     header p {
@@ -42,7 +42,6 @@
       padding: 0 20px;
     }
 
-    /* Slideshow */
     .slideshow-container {
       position: relative;
       max-width: 100%;
@@ -133,20 +132,20 @@
 </head>
 <body>
   <header>
-    <h1>4BR Luxury Apartment – Knapp's Corner</h1>
+    <h1>4BR Apartment for Rent</h1>
     <p>$2,400/month – Grand Rapids, MI</p>
   </header>
 
   <main>
     <div class="slideshow-container">
-      <div class="mySlides"><img src="images/photo1.jpg" alt="Living room" /></div>
-      <div class="mySlides"><img src="images/photo2.jpg" alt="Modern kitchen" /></div>
-      <div class="mySlides"><img src="images/photo3.jpg" alt="Bedroom 1" /></div>
-      <div class="mySlides"><img src="images/photo4.jpg" alt="Bedroom 2" /></div>
-      <div class="mySlides"><img src="images/photo5.jpg" alt="Bathroom" /></div>
-      <div class="mySlides"><img src="images/photo6.jpg" alt="Closet or hallway" /></div>
-      <div class="mySlides"><img src="images/photo7.jpg" alt="Laundry room or amenities" /></div>
-      <div class="mySlides"><img src="images/photo8.jpg" alt="Outdoor view or complex" /></div>
+      <div class="mySlides"><img src="1.jpg" alt="Photo 1" /></div>
+      <div class="mySlides"><img src="2.jpg" alt="Photo 2" /></div>
+      <div class="mySlides"><img src="3.jpg" alt="Photo 3" /></div>
+      <div class="mySlides"><img src="4.jpg" alt="Photo 4" /></div>
+      <div class="mySlides"><img src="5.jpg" alt="Photo 5" /></div>
+      <div class="mySlides"><img src="6.jpg" alt="Photo 6" /></div>
+      <div class="mySlides"><img src="7.jpg" alt="Photo 7" /></div>
+      <div class="mySlides"><img src="8.jpg" alt="Photo 8" /></div>
 
       <a class="prev" onclick="plusSlides(-1)">❮</a>
       <a class="next" onclick="plusSlides(1)">❯</a>
@@ -161,17 +160,17 @@
         <li>🐶 Pet-friendly (with approval)</li>
         <li>🧺 In-unit washer & dryer</li>
         <li>🌳 Spacious backyard & peaceful neighborhood</li>
-        <li>📍 Prime location near Meijer, Celebration Cinema & dining</li>
+        <li>📍 Convenient location near shopping, dining, and parks</li>
         <li>🅿️ Off-street parking available</li>
       </ul>
     </div>
 
     <div class="contact">
       <h2>Schedule a Tour</h2>
-      <p>We'd love to show you around! Reach out at:  
+      <p>Interested? Contact us at:  
         <a href="mailto:youremail@example.com">youremail@example.com</a>
       </p>
-      <p><strong>ECOrent – Trusted Rentals in Grand Rapids</strong></p>
+      <p><strong>ECOrent – Quality Rentals in Grand Rapids</strong></p>
     </div>
   </main>
 
@@ -188,15 +187,19 @@
     }
 
     function showSlides(n) {
-      let i;
       const slides = document.getElementsByClassName("mySlides");
-      if (n > slides.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
       }
       slides[slideIndex - 1].style.display = "block";
     }
+
+    // Auto-show the first slide
+    document.addEventListener("DOMContentLoaded", () => {
+      showSlides(slideIndex);
+    });
   </script>
 </body>
 </html>
