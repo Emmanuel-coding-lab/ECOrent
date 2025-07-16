@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>4BR Apartment for Rent – Grand Rapids</title>
+  <title>4BR Downtown Apartment for Rent</title>
   <style>
     :root {
       --primary: #2ecc71;
       --dark: #2c3e50;
       --light: #f8f9fa;
       --gray: #888;
-      --shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     body {
@@ -39,12 +38,6 @@
       display: flex;
       align-items: center;
       gap: 15px;
-    }
-
-    .header-logo {
-      height: 50px;
-      width: auto;
-      border-radius: 6px;
     }
 
     .header-text h1 {
@@ -83,17 +76,17 @@
     .carousel {
       flex: 1 1 500px;
       position: relative;
-      overflow: hidden;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
       background: black;
+      border-radius: 10px;
+      overflow: hidden;
       aspect-ratio: 4 / 3;
     }
 
     .carousel-slide {
       position: absolute;
       top: 0; left: 0;
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       display: none;
       justify-content: center;
       align-items: center;
@@ -103,21 +96,10 @@
       display: flex;
     }
 
-    .carousel-slide::before {
-      content: '';
-      position: absolute;
-      width: 100%; height: 100%;
-      background-position: center;
-      background-size: cover;
-      filter: blur(15px) brightness(0.7);
-      z-index: 1;
-    }
-
     .carousel-slide img {
-      max-height: 100%;
       max-width: 100%;
+      max-height: 100%;
       object-fit: contain;
-      z-index: 2;
       border-radius: 8px;
     }
 
@@ -129,7 +111,7 @@
       justify-content: space-between;
       transform: translateY(-50%);
       padding: 0 10px;
-      z-index: 3;
+      z-index: 2;
     }
 
     .carousel-controls button {
@@ -147,7 +129,7 @@
       background: white;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: var(--shadow);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
     .details h2 {
@@ -192,9 +174,8 @@
   <header>
     <div class="header-container">
       <div class="header-left">
-        <img src="logo.jpg" alt="ECOrent Logo" class="header-logo" />
         <div class="header-text">
-          <h1>4BR Apartment for Rent</h1>
+          <h1>4BR Downtown Apartment for Rent</h1>
           <p>$2,400/month – Grand Rapids, MI</p>
         </div>
       </div>
@@ -207,7 +188,7 @@
 
   <main>
     <div class="carousel" id="carousel">
-      <!-- Images will be inserted here by JS -->
+      <!-- Slides added by JavaScript -->
     </div>
 
     <div class="details">
@@ -215,13 +196,12 @@
       <ul>
         <li>🛏 4 Bedrooms</li>
         <li>🛁 1 Bathroom</li>
-        <li>💧 Water & trash included</li>
+        <li>📐 1,200 sq ft</li>
+        <li>💧 Water & gas included</li>
         <li>🐶 Pet-friendly</li>
         <li>🧺 In-unit washer & dryer</li>
         <li>📍 135 Straight NW, Grand Rapids, MI</li>
-        <li>🛒 Close to Meijer, Celebration Cinema, restaurants & more</li>
-        <li>🚗 Parking available</li>
-        <li>📶 High-speed internet ready</li>
+        <li>🚗 Street parking available</li>
       </ul>
     </div>
   </main>
@@ -238,148 +218,7 @@
       const slide = document.createElement('div');
       slide.classList.add('carousel-slide');
       if (i === 1) slide.classList.add('active');
-      slide.style.setProperty('--bg-url', `url(${i}.jpg)`);
-
-      slide.style.setProperty('--img-url', `${i}.jpg`);
-      slide.style.backgroundImage = `url(${i}.jpg)`;
       slide.innerHTML = `<img src="${i}.jpg" alt="Apartment photo ${i}" />`;
-      slide.style.setProperty('--image-index', i);
-      slide.style.setProperty('--total', imageCount);
-      slide.style.setProperty('--i', i);
-      slide.style.setProperty('--current', 1);
-      slide.style.setProperty('--count', imageCount);
-      slide.style.setProperty('--opacity', 0.5);
-      slide.style.setProperty('--scale', 1);
-      slide.style.setProperty('--index', i);
-      slide.style.setProperty('--z-index', i === 1 ? 1 : 0);
-      slide.style.setProperty('--visibility', i === 1 ? 'visible' : 'hidden');
-      slide.style.setProperty('--position', 'absolute');
-      slide.style.setProperty('--top', 0);
-      slide.style.setProperty('--left', 0);
-      slide.style.setProperty('--right', 0);
-      slide.style.setProperty('--bottom', 0);
-      slide.style.setProperty('--display', 'flex');
-      slide.style.setProperty('--justify-content', 'center');
-      slide.style.setProperty('--align-items', 'center');
-      slide.style.setProperty('--transition', 'opacity 0.5s ease-in-out');
-
-      slide.style.setProperty('--blurred-bg', `url(${i}.jpg)`);
-
-      slide.style.setProperty('--filter', 'blur(12px)');
-
-      slide.style.setProperty('--background-size', 'cover');
-      slide.style.setProperty('--background-position', 'center');
-
-      slide.style.setProperty('--background-image', `url(${i}.jpg)`);
-
-      slide.style.setProperty('--bg-img', `url(${i}.jpg)`);
-      slide.style.setProperty('--opacity', 0.7);
-
-      slide.style.setProperty('--overflow', 'hidden');
-
-      slide.style.setProperty('--pointer-events', 'none');
-
-      slide.style.setProperty('--width', '100%');
-      slide.style.setProperty('--height', '100%');
-
-      slide.style.setProperty('--border-radius', '10px');
-
-      slide.style.setProperty('--zIndex', i === 1 ? 1 : 0);
-
-      slide.style.setProperty('--background', `center / cover no-repeat url(${i}.jpg)`);
-
-      slide.style.setProperty('--display', 'flex');
-
-      slide.style.setProperty('--object-fit', 'contain');
-
-      slide.style.setProperty('--background-blur', 'blur(12px)');
-
-      slide.style.setProperty('--bg-opacity', '0.4');
-
-      slide.style.setProperty('--img-position', 'center');
-
-      slide.style.setProperty('--bg-filter', 'blur(15px)');
-
-      slide.style.setProperty('--brightness', '0.5');
-
-      slide.style.setProperty('--object-position', 'center');
-
-      slide.style.setProperty('--object-justify', 'center');
-
-      slide.style.setProperty('--object-align', 'center');
-
-      slide.style.setProperty('--background-repeat', 'no-repeat');
-
-      slide.style.setProperty('--flex-direction', 'column');
-
-      slide.style.setProperty('--content-align', 'center');
-
-      slide.style.setProperty('--content-justify', 'center');
-
-      slide.style.setProperty('--backdrop-filter', 'blur(10px)');
-
-      slide.style.setProperty('--object-size', 'cover');
-
-      slide.style.setProperty('--object-fit', 'contain');
-
-      slide.style.setProperty('--position', 'relative');
-
-      slide.style.setProperty('--z-index', 1);
-
-      slide.style.setProperty('--display', 'flex');
-
-      slide.style.setProperty('--align-items', 'center');
-
-      slide.style.setProperty('--justify-content', 'center');
-
-      slide.style.setProperty('--overflow', 'hidden');
-
-      slide.style.setProperty('--object-position', 'center center');
-
-      slide.style.setProperty('--background-position', 'center center');
-
-      slide.style.setProperty('--background-size', 'cover');
-
-      slide.style.setProperty('--opacity', 1);
-
-      slide.style.setProperty('--box-shadow', '0 0 10px rgba(0,0,0,0.2)');
-
-      slide.style.setProperty('--border', 'none');
-
-      slide.style.setProperty('--transition', 'all 0.4s ease');
-
-      slide.style.setProperty('--z-index', 1);
-
-      slide.style.setProperty('--position', 'absolute');
-
-      slide.style.setProperty('--top', 0);
-
-      slide.style.setProperty('--left', 0);
-
-      slide.style.setProperty('--width', '100%');
-
-      slide.style.setProperty('--height', '100%');
-
-      slide.style.setProperty('--background-image', `url(${i}.jpg)`);
-
-      slide.style.setProperty('--filter', 'blur(10px) brightness(0.7)');
-
-      slide.style.setProperty('--background', `url(${i}.jpg)`);
-
-      slide.style.backgroundSize = 'cover';
-      slide.style.backgroundPosition = 'center';
-      slide.style.filter = 'blur(12px) brightness(0.6)';
-      slide.style.zIndex = 1;
-      slide.style.position = 'absolute';
-      slide.style.width = '100%';
-      slide.style.height = '100%';
-
-      slide.querySelector('img').style.zIndex = 2;
-
-      slide.querySelector('img').style.borderRadius = '8px';
-
-      slide.querySelector('img').style.objectFit = 'contain';
-
       carousel.appendChild(slide);
     }
 
