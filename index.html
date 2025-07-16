@@ -3,79 +3,128 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ECOrent | Sustainable Property Rentals</title>
+  <title>4BR Apartment for Rent – Grand Rapids, MI</title>
   <style>
     :root {
-      --primary-color: #2ecc71;
-      --secondary-color: #2c3e50;
-      --light-bg: #f8f9fa;
-      --text-color: #333;
-      --card-bg: #fff;
+      --primary: #2ecc71;
+      --dark: #2c3e50;
+      --light: #f8f9fa;
+      --gray: #888;
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+
     body {
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      color: var(--text-color);
-      background-color: var(--light-bg);
+      background-color: var(--light);
+      color: var(--dark);
     }
+
     header {
-      background-color: var(--secondary-color);
+      background: var(--dark);
       color: white;
-      padding: 40px 20px;
+      padding: 30px 20px;
       text-align: center;
     }
+
     header h1 {
-      font-size: 2.5rem;
+      margin: 0;
+      font-size: 2.2rem;
     }
+
     header p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       margin-top: 10px;
     }
+
     main {
-      padding: 40px 20px;
-      max-width: 1100px;
-      margin: auto;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
-    h2 {
-      text-align: center;
+
+    .slideshow-container {
+      position: relative;
+      max-width: 100%;
       margin-bottom: 30px;
-      color: var(--secondary-color);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
     }
-    .property-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
+
+    .mySlides {
+      display: none;
     }
-    .property-card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
-      transition: transform 0.2s ease;
+
+    .mySlides img {
+      width: 100%;
+      border-radius: 10px;
     }
-    .property-card:hover {
-      transform: translateY(-5px);
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      margin-top: -22px;
+      padding: 12px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 0 3px 3px 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      user-select: none;
+      transition: 0.3s;
     }
-    .property-card h3 {
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .details h2 {
+      color: var(--primary);
       margin-bottom: 10px;
     }
-    .property-card p {
-      margin-bottom: 5px;
-      font-size: 0.95rem;
+
+    .details ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 1.1rem;
     }
-    .property-card a {
-      color: var(--primary-color);
+
+    .details li {
+      margin-bottom: 8px;
+    }
+
+    .contact {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .contact h2 {
+      margin-top: 0;
+    }
+
+    .contact a {
+      color: var(--primary);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: bold;
     }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
-      color: #888;
+      color: var(--gray);
       font-size: 0.9rem;
       margin-top: 40px;
     }
@@ -83,26 +132,74 @@
 </head>
 <body>
   <header>
-    <h1>ECOrent</h1>
-    <p>Eco-friendly, affordable rental properties across Michigan</p>
+    <h1>4BR Apartment for Rent</h1>
+    <p>$2,400/month – Grand Rapids, MI</p>
   </header>
+
   <main>
-    <h2>Available Listings</h2>
-    <div class="property-grid">
-      <div class="property-card">
-        <h3><a href="properties/unit101/index.html">Modern 1BR Apartment</a></h3>
-        <p>$1,200/month</p>
-        <p>Grand Rapids, MI</p>
-      </div>
-      <div class="property-card">
-        <h3><a href="properties/studio23/index.html">Cozy Downtown Studio</a></h3>
-        <p>$950/month</p>
-        <p>Grand Rapids, MI</p>
-      </div>
+    <div class="slideshow-container">
+      <div class="mySlides"><img src="1.jpg" alt="Photo 1" /></div>
+      <div class="mySlides"><img src="2.jpg" alt="Photo 2" /></div>
+      <div class="mySlides"><img src="3.jpg" alt="Photo 3" /></div>
+      <div class="mySlides"><img src="4.jpg" alt="Photo 4" /></div>
+      <div class="mySlides"><img src="5.jpg" alt="Photo 5" /></div>
+      <div class="mySlides"><img src="6.jpg" alt="Photo 6" /></div>
+      <div class="mySlides"><img src="7.jpg" alt="Photo 7" /></div>
+      <div class="mySlides"><img src="8.jpg" alt="Photo 8" /></div>
+
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+
+    <div class="details">
+      <h2>Property Details</h2>
+      <ul>
+        <li>🛏 4 Bedrooms</li>
+        <li>🛁 1 Bathroom</li>
+        <li>💧 Water, trash & lawn care included</li>
+        <li>🐶 Pet-friendly (with approval)</li>
+        <li>🧺 In-unit washer & dryer</li>
+        <li>🌳 Spacious backyard & peaceful neighborhood</li>
+        <li>📍 Convenient location near shopping, dining, and parks</li>
+        <li>🅿️ Off-street parking available</li>
+      </ul>
+    </div>
+
+    <div class="contact">
+      <h2>Schedule a Tour</h2>
+      <p>Interested? Contact us at:  
+        <a href="mailto:youremail@example.com">youremail@example.com</a>
+      </p>
+      <p><strong>ECOrent – Quality Rentals in Grand Rapids</strong></p>
     </div>
   </main>
+
   <footer>
-    &copy; 2025 ECOrent • Built with 💚 for sustainable living
+    &copy; 2025 ECOrent. All rights reserved.
   </footer>
+
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+      const slides = document.getElementsByClassName("mySlides");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex - 1].style.display = "block";
+    }
+
+    // Auto-show the first slide
+    document.addEventListener("DOMContentLoaded", () => {
+      showSlides(slideIndex);
+    });
+  </script>
 </body>
 </html>
