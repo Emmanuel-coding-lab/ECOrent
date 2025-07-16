@@ -85,7 +85,6 @@
     .carousel {
       flex: 1 1 500px;
       position: relative;
-      background: var(--light);
       border-radius: 12px;
       overflow: hidden;
       aspect-ratio: 4 / 3;
@@ -114,7 +113,7 @@
       background-size: cover;
       background-position: center;
       filter: blur(20px);
-      transform: scale(1.05);
+      transform: scale(1.1);
       z-index: 0;
     }
 
@@ -183,14 +182,60 @@
     @media (max-width: 768px) {
       main {
         flex-direction: column;
+        padding: 0 10px;
+        gap: 20px;
       }
+
+      .carousel {
+        flex: 1 1 100%;
+        height: auto;
+        max-height: 60vh;
+        aspect-ratio: auto;
+      }
+
+      .carousel-slide img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
       .header-left {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
       }
+
+      .header-text h1 {
+        font-size: 1.2rem;
+      }
+
+      .header-text p {
+        font-size: 0.95rem;
+      }
+
       .header-contact {
         margin-top: 10px;
         text-align: left;
+        font-size: 0.9rem;
+        width: 100%;
+      }
+
+      .details {
+        padding: 20px;
+      }
+
+      .details h2 {
+        font-size: 1.3rem;
+      }
+
+      .details li {
+        font-size: 1rem;
+      }
+
+      .carousel-controls button {
+        font-size: 16px;
+        padding: 6px 10px;
       }
     }
   </style>
@@ -244,30 +289,29 @@
       const slide = document.createElement('div');
       slide.classList.add('carousel-slide');
       if (i === 1) slide.classList.add('active');
-      slide.innerHTML = `
-        <img src="${i}.jpg" alt="Apartment photo ${i}" />
-      `;
-      slide.style.setProperty('--bg', `url(${i}.jpg)`);
-      slide.style.setProperty('--img', `${i}.jpg`);
-      slide.querySelector('img').onload = function () {
-        slide.style.setProperty('--bg-url', `url(${this.src})`);
-        slide.style.setProperty('--img-url', `${this.src}`);
-        slide.querySelector('::before');
-        slide.style.setProperty('background-image', `url(${this.src})`);
-        slide.style.setProperty('background-size', 'cover');
-        slide.style.setProperty('background-position', 'center');
-      };
-      slide.querySelector('img').addEventListener('load', () => {
-        slide.querySelector('::before')?.style?.setProperty?.('background-image', `url(${i}.jpg)`);
-      });
+      slide.innerHTML = `<img src="${i}.jpg" alt="Apartment photo ${i}" />`;
       slide.style.setProperty('--bg-url', `url(${i}.jpg)`);
+      slide.style.backgroundImage = `url(${i}.jpg)`;
       slide.querySelector('::before')?.style?.setProperty?.('background-image', `url(${i}.jpg)`);
-      slide.querySelector('::before')?.style?.setProperty?.('filter', `blur(20px)`);
       carousel.appendChild(slide);
     }
 
-    let current = 0;
     const slides = document.querySelectorAll('.carousel-slide');
+    slides.forEach(slide => {
+      const img = slide.querySelector('img');
+      img.addEventListener('load', () => {
+        slide.style.setProperty('--bg-url', `url(${img.src})`);
+        slide.style.setProperty('--bg-image', `url(${img.src})`);
+        slide.style.backgroundImage = `url(${img.src})`;
+        slide.style.backgroundSize = 'cover';
+        slide.style.backgroundPosition = 'center';
+        slide.style.backgroundRepeat = 'no-repeat';
+        slide.querySelector('::before')?.style?.setProperty?.('background-image', `url(${img.src})`);
+      });
+      slide.style.setProperty('--bg-url', `url(${img.src})`);
+    });
+
+    let current = 0;
 
     const nav = document.createElement('div');
     nav.classList.add('carousel-controls');
