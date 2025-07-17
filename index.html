@@ -206,6 +206,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      padding-left: 10px;
     }
 
     .details li i {
@@ -274,7 +275,23 @@
       font-size: 0.95rem;
     }
 
+    .mobile-only {
+      display: none;
+    }
+
+    .desktop-only {
+      display: inline;
+    }
+
     @media (max-width: 768px) {
+      .mobile-only {
+        display: inline;
+      }
+
+      .desktop-only {
+        display: none;
+      }
+
       .header-container {
         flex-direction: column;
         align-items: flex-start;
@@ -328,7 +345,12 @@
       </div>
       <div class="header-info">
         <div class="price-tag">$2,400 / month</div>
-        <div class="phone"><a href="tel:1234567890">(123) 456-7890</a></div>
+        <div class="phone">
+          <span class="mobile-only">
+            <a href="tel:16162933460">(616) 293 - 3460</a>
+          </span>
+          <span class="desktop-only">(616) 293 - 3460</span>
+        </div>
       </div>
     </div>
   </header>
@@ -344,7 +366,7 @@
         <li><i class="fas fa-tint"></i>Water & gas included</li>
         <li><i class="fas fa-dog"></i>Pet-friendly</li>
         <li><i class="fas fa-soap"></i>In-unit washer & dryer</li>
-        <li><i class="fas fa-map-marker-alt"></i><a href="https://maps.google.com/?q=135+Straight+NW,+Grand+Rapids,+MI" target="_blank" style="color: inherit; text-decoration: underline;">135 Straight NW, Grand Rapids, MI</a></li>
+        <li><i class="fas fa-map-marker-alt"></i>135 Straight NW, Grand Rapids, MI</li>
         <li><i class="fas fa-car"></i>Street parking available</li>
       </ul>
     </div>
