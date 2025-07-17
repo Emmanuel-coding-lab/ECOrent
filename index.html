@@ -51,6 +51,11 @@
       object-fit: cover;
       flex-shrink: 0;
     }
+    
+    .header-price .price-tag {
+      font-weight: 600;
+      font-size: 1.4rem;
+    }
 
     .header-text h1 {
       margin: 0;
@@ -78,7 +83,7 @@
 
     main {
       max-width: 1200px;
-      margin: 65px auto 35px;
+      margin: 55px auto 40px;
       padding: 0 20px;
       display: flex;
       gap: 40px;
@@ -350,9 +355,8 @@
           <p>Grand Rapids, MI</p>
         </div>
       </div>
-      <div class="header-contact">
-        <p><a href="mailto:youremail@example.com">youremail@example.com</a></p>
-        <p><a href="tel:1234567890">(123) 456-7890</a></p>
+      <div class="header-price">
+        <span class="price-tag" style="position: static; box-shadow: none; font-size: 1.5rem; background: none; color: white; padding: 0;">$2,400 / month</span>
       </div>
     </div>
   </header>
@@ -360,7 +364,6 @@
   <main>
     <div class="carousel" id="carousel"></div>
     <div class="details">
-      <span class="price-tag">$2,400 / month</span>
       <h2>Property Details</h2>
       <ul>
         <li>4 Bedrooms</li>
@@ -372,7 +375,6 @@
         <li>135 Straight NW, Grand Rapids, MI</li>
         <li>Street parking available</li>
       </ul>
-      <div class="mobile-inline-price">$2,400 / month</div>
     </div>
   </main>
 
