@@ -14,7 +14,7 @@
       --dark: #2c3e50;
       --light: #f8f9fa;
       --gray: #888;
-      --details-bg: #ebf4fb;
+      --box-bg: #ffffff;
       --details-title: #14532d;
     }
 
@@ -86,11 +86,17 @@
       flex-wrap: wrap;
     }
 
-    .carousel {
-      flex: 1 1 500px;
-      position: relative;
+    .carousel, .details {
+      flex: 1 1 48%;
+      background: var(--box-bg);
+      padding: 30px;
       border-radius: 12px;
-      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+      box-sizing: border-box;
+    }
+
+    .carousel {
+      position: relative;
       aspect-ratio: 4 / 3;
       min-height: 300px;
       background-color: #eee;
@@ -152,14 +158,6 @@
       border-radius: 5px;
     }
 
-    .details {
-      flex: 1 1 400px;
-      background: var(--details-bg);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-    }
-
     .details h2 {
       color: var(--details-title);
       margin-top: 0;
@@ -167,13 +165,13 @@
     }
 
     .details ul {
-      list-style: none;
-      padding-left: 0;
+      padding-left: 20px;
     }
 
     .details li {
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       font-size: 1.1rem;
+      list-style-type: disc;
     }
 
     .extras {
@@ -186,11 +184,12 @@
     }
 
     .contact-form, .map {
-      flex: 1 1 500px;
-      background: white;
+      flex: 1 1 48%;
+      background: var(--box-bg);
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      box-sizing: border-box;
     }
 
     .contact-form h2, .map h2 {
@@ -274,17 +273,17 @@
   <section class="extras">
     <div class="contact-form">
       <h2>Contact Us</h2>
-      <form>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <input type="tel" placeholder="Your Phone Number" />
-        <textarea placeholder="Message" rows="5" required></textarea>
+      <form action="mailto:youremail@example.com" method="POST" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="tel" name="phone" placeholder="Your Phone Number" />
+        <textarea name="message" placeholder="Message" rows="5" required></textarea>
         <button type="submit">Send Message</button>
       </form>
     </div>
     <div class="map">
       <h2>Find Us</h2>
-      <iframe src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=135+Straight+NW,+Grand+Rapids+MI" allowfullscreen></iframe>
+      <iframe src="https://maps.google.com/maps?q=135+Straight+NW,+Grand+Rapids,+MI&output=embed"></iframe>
     </div>
   </section>
 
