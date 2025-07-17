@@ -41,8 +41,6 @@
       display: flex;
       align-items: center;
       gap: 15px;
-      flex: 1;
-      min-width: 0;
     }
 
     .logo {
@@ -50,25 +48,21 @@
       height: 60px;
       object-fit: cover;
       border-radius: 8px;
-      flex-shrink: 0;
     }
 
     .header-text h1 {
       margin: 0;
-      font-size: 1.8rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size: 2rem;
     }
 
     .header-text p {
       margin: 6px 0 0;
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
 
     .header-contact {
       text-align: right;
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
 
     .header-contact a {
@@ -194,7 +188,11 @@
       list-style: none;
     }
 
-    .details li::before { content: '🏠 '; margin-right: 6px; }
+    .details li::before {
+      content: '🏠 ';
+      margin-right: 6px;
+    }
+
     .details li:nth-child(2)::before { content: '🛁 '; }
     .details li:nth-child(3)::before { content: '📏 '; }
     .details li:nth-child(4)::before { content: '💧 '; }
@@ -210,7 +208,6 @@
       display: flex;
       gap: 40px;
       flex-wrap: wrap;
-      flex-direction: row-reverse; /* swapped map and contact */
     }
 
     .contact-form, .map {
@@ -261,47 +258,150 @@
       font-size: 0.95rem;
     }
 
-    /* Mobile adjustments */
+    /* ---------- MOBILE FIXES ---------- */
     @media (max-width: 768px) {
       .header-container {
         flex-direction: column;
         align-items: flex-start;
-        gap: 10px;
-      }
-
-      .header-left {
-        width: 100%;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+        gap: 12px;
       }
 
       .header-text h1 {
-        font-size: 1.3rem;
-        white-space: normal;
+        font-size: 1.5rem;
+        white-space: nowrap;
       }
 
-      main {
+      .header-text p {
+        font-size: 1rem;
+      }
+
+      .header-contact {
+        text-align: left;
+        font-size: 0.95rem;
+      }
+
+      main, .extras {
         flex-direction: column;
       }
 
-      .carousel, .details {
+      .carousel,
+      .details,
+      .contact-form,
+      .map {
         flex: 1 1 100%;
-        padding: 20px;
+        width: 100%;
       }
 
-      .extras {
-        flex-direction: column-reverse;
+      .carousel {
+        aspect-ratio: auto;
+        min-height: auto;
       }
 
-      .contact-form, .map {
-        flex: 1 1 100%;
-        padding: 20px;
+      .contact-form {
+        order: 2;
+      }
+
+      .map {
+        order: 1;
       }
     }
   </style>
 </head>
 <body>
-  <!-- BODY CONTENT HERE -->
+  <header>
+    <div class="header-container">
+      <div class="header-left">
+        <img src="logo.jpg" alt="Logo" class="logo" />
+        <div class="header-text">
+          <h1>4BR Downtown Apartment for Rent</h1>
+          <p>$2,400/month – Grand Rapids, MI</p>
+        </div>
+      </div>
+      <div class="header-contact">
+        <p><a href="mailto:youremail@example.com">youremail@example.com</a></p>
+        <p><a href="tel:1234567890">(123) 456-7890</a></p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="carousel" id="carousel"></div>
+    <div class="details">
+      <h2>Property Details</h2>
+      <ul>
+        <li>4 Bedrooms</li>
+        <li>1 Bathroom</li>
+        <li>1,200 sq ft</li>
+        <li>Water & gas included</li>
+        <li>Pet-friendly</li>
+        <li>In-unit washer & dryer</li>
+        <li>135 Straight NW, Grand Rapids, MI</li>
+        <li>Street parking available</li>
+      </ul>
+    </div>
+  </main>
+
+  <section class="extras">
+    <div class="map">
+      <h2>Location & Directions</h2>
+      <iframe src="https://maps.google.com/maps?q=135+Straight+NW,+Grand+Rapids,+MI&output=embed"></iframe>
+    </div>
+    <div class="contact-form">
+      <h2>Contact Us</h2>
+      <form action="mailto:youremail@example.com" method="POST" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="tel" name="phone" placeholder="Your Phone Number" />
+        <textarea name="message" placeholder="Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 ECOrent. All rights reserved.
+  </footer>
+
+  <script>
+    const imageCount = 8;
+    const carousel = document.getElementById('carousel');
+    const slides = [];
+
+    for (let i = 1; i <= imageCount; i++) {
+      const slide = document.createElement('div');
+      slide.classList.add('carousel-slide');
+      if (i === 1) slide.classList.add('active');
+
+      const imageURL = `${i}.jpg`;
+      slide.innerHTML = `
+        <div class="blur-bg" style="background-image: url('${imageURL}');"></div>
+        <img src="${imageURL}" alt="Apartment photo ${i}" />
+      `;
+      carousel.appendChild(slide);
+      slides.push(slide);
+    }
+
+    let current = 0;
+
+    const nav = document.createElement('div');
+    nav.classList.add('carousel-controls');
+    nav.innerHTML = `
+      <button id="prev">&#10094;</button>
+      <button id="next">&#10095;</button>
+    `;
+    carousel.appendChild(nav);
+
+    document.getElementById('prev').onclick = () => {
+      slides[current].classList.remove('active');
+      current = (current - 1 + slides.length) % slides.length;
+      slides[current].classList.add('active');
+    };
+
+    document.getElementById('next').onclick = () => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    };
+  </script>
 </body>
 </html>
