@@ -138,27 +138,28 @@
     .carousel-controls {
       position: absolute;
       top: 50%;
+      left: 0;
       width: 100%;
       display: flex;
       justify-content: space-between;
       transform: translateY(-50%);
       padding: 0 10px;
-      z-index: 2;
-      pointer-events: none;
+      z-index: 3;
+      pointer-events: none
     }
 
     .carousel-controls button {
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.5);
       color: white;
       border: none;
-      padding: 8px 12px;
+      padding: 8px 14px;
       cursor: pointer;
       font-size: 20px;
-      border-radius: 5px;
+      border-radius: 6px;
       pointer-events: all;
       opacity: 0.9;
+      z-index: 4; 
       transition: background 0.2s ease;
-      z-index: 3;
     }
 
     .carousel-controls button:hover {
@@ -199,7 +200,7 @@
 
     .extras {
       max-width: 1200px;
-      margin: 40px auto 10px;
+      margin: 40px auto 30px;
       padding: 0 20px;
       display: flex;
       gap: 40px;
@@ -313,14 +314,14 @@
   <script>
     const imageCount = 8;
     const carousel = document.getElementById('carousel');
-
+  
     const slides = [];
-
+  
     for (let i = 1; i <= imageCount; i++) {
       const slide = document.createElement('div');
       slide.classList.add('carousel-slide');
       if (i === 1) slide.classList.add('active');
-
+  
       const imageURL = `${i}.jpg`;
       slide.innerHTML = `
         <div class="blur-bg" style="background-image: url('${imageURL}');"></div>
@@ -329,9 +330,9 @@
       carousel.appendChild(slide);
       slides.push(slide);
     }
-
+  
     let current = 0;
-
+  
     const nav = document.createElement('div');
     nav.classList.add('carousel-controls');
     nav.innerHTML = `
@@ -339,13 +340,13 @@
       <button id="next">&#10095;</button>
     `;
     carousel.appendChild(nav);
-
+  
     document.getElementById('prev').onclick = () => {
       slides[current].classList.remove('active');
       current = (current - 1 + slides.length) % slides.length;
       slides[current].classList.add('active');
     };
-
+  
     document.getElementById('next').onclick = () => {
       slides[current].classList.remove('active');
       current = (current + 1) % slides.length;
