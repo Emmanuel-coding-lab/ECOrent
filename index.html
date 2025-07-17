@@ -45,20 +45,21 @@
     }
 
     .logo {
-      height: 90px;
-      width: auto;
+      height: 85px;
+      width: 85px;
       border-radius: 8px;
       object-fit: cover;
+      flex-shrink: 0;
     }
 
     .header-text h1 {
       margin: 0;
-      font-size: 2.4rem;
+      font-size: 2rem; /* back to original */
     }
 
     .header-text p {
       margin: 6px 0 0;
-      font-size: 1.2rem;
+      font-size: 1.1rem; /* back to original */
     }
 
     .header-contact {
@@ -91,6 +92,20 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.07);
       box-sizing: border-box;
+      position: relative;
+    }
+
+    .price-tag {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 10px 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .carousel {
@@ -312,6 +327,12 @@
       .map {
         order: 1;
       }
+
+      .price-tag {
+        position: static;
+        margin-top: 12px;
+        display: inline-block;
+      }
     }
   </style>
 </head>
@@ -322,7 +343,7 @@
         <img src="logo.jpg" alt="Logo" class="logo" />
         <div class="header-text">
           <h1>4BR Downtown Apartment for Rent</h1>
-          <p>$2,400/month – Grand Rapids, MI</p>
+          <p>Grand Rapids, MI</p>
         </div>
       </div>
       <div class="header-contact">
@@ -335,6 +356,7 @@
   <main>
     <div class="carousel" id="carousel"></div>
     <div class="details">
+      <span class="price-tag">$2,400 / month</span>
       <h2>Property Details</h2>
       <ul>
         <li>4 Bedrooms</li>
