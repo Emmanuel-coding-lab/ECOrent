@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>4BR Downtown Apartment for Rent</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --primary: #2ecc71;
@@ -16,7 +20,7 @@
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: var(--light);
       color: var(--dark);
     }
@@ -172,76 +176,64 @@
       font-size: 1.1rem;
     }
 
+    .extras {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .contact-form, .map {
+      flex: 1 1 500px;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .contact-form h2, .map h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .contact-form button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 12px;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
       color: var(--gray);
       font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      main {
-        flex-direction: column;
-        padding: 0 24px;
-        gap: 24px;
-        margin-top: 20px;
-        margin-bottom: 0;
-      }
-
-      .carousel {
-        width: 100%;
-        height: auto;
-        aspect-ratio: unset;
-        min-height: 160px;
-        margin-top: 18px; /* new space between header and images */
-        margin-bottom: 10px;
-      }
-
-      .carousel-slide img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-      }
-
-      .header-left {
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 10px;
-      }
-
-      .header-text h1 {
-        font-size: 1.2rem;
-      }
-
-      .header-text p {
-        font-size: 0.95rem;
-      }
-
-      .header-contact {
-        margin-top: 10px;
-        text-align: left;
-        font-size: 0.9rem;
-        width: 100%;
-      }
-
-      .details {
-        padding: 22px;
-        margin-bottom: 20px; /* remove space between details and footer */
-      }
-
-      .details h2 {
-        font-size: 1.3rem;
-      }
-
-      .details li {
-        font-size: 1rem;
-      }
-
-      .carousel-controls button {
-        font-size: 16px;
-        padding: 6px 10px;
-      }
     }
   </style>
 </head>
@@ -256,31 +248,45 @@
         </div>
       </div>
       <div class="header-contact">
-        <p>📧 <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-        <p>📞 <a href="tel:1234567890">(123) 456-7890</a></p>
+        <p><a href="mailto:youremail@example.com">youremail@example.com</a></p>
+        <p><a href="tel:1234567890">(123) 456-7890</a></p>
       </div>
     </div>
   </header>
 
   <main>
-    <div class="carousel" id="carousel">
-      <!-- Slides added by JavaScript -->
-    </div>
-
+    <div class="carousel" id="carousel"></div>
     <div class="details">
       <h2>Property Details</h2>
       <ul>
-        <li>🛏 4 Bedrooms</li>
-        <li>🛁 1 Bathroom</li>
-        <li>📐 1,200 sq ft</li>
-        <li>💧 Water & gas included</li>
-        <li>🐶 Pet-friendly</li>
-        <li>🧺 In-unit washer & dryer</li>
-        <li>📍 135 Straight NW, Grand Rapids, MI</li>
-        <li>🚗 Street parking available</li>
+        <li>4 Bedrooms</li>
+        <li>1 Bathroom</li>
+        <li>1,200 sq ft</li>
+        <li>Water & gas included</li>
+        <li>Pet-friendly</li>
+        <li>In-unit washer & dryer</li>
+        <li>135 Straight NW, Grand Rapids, MI</li>
+        <li>Street parking available</li>
       </ul>
     </div>
   </main>
+
+  <section class="extras">
+    <div class="contact-form">
+      <h2>Contact Us</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <input type="tel" placeholder="Your Phone Number" />
+        <textarea placeholder="Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+    <div class="map">
+      <h2>Find Us</h2>
+      <iframe src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=135+Straight+NW,+Grand+Rapids+MI" allowfullscreen></iframe>
+    </div>
+  </section>
 
   <footer>
     &copy; 2025 ECOrent. All rights reserved.
@@ -296,7 +302,6 @@
       if (i === 1) slide.classList.add('active');
 
       const imageURL = `${i}.jpg`;
-
       slide.innerHTML = `
         <div class="blur-bg" style="background-image: url('${imageURL}');"></div>
         <img src="${imageURL}" alt="Apartment photo ${i}" />
