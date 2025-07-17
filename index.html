@@ -181,7 +181,7 @@
       color: var(--details-title);
       margin-top: 0;
       font-size: 1.6rem;
-      margin-bottom: 12px;
+      margin-bottom: 14px; /* Increased from 12px to 14px */
     }
 
     .details ul {
@@ -216,13 +216,13 @@
     .contact-form, .map {
       flex: 1 1 48%;
       background: var(--box-bg);
-      padding: 30px;
+      padding: 25px; /* Reduced from 30px to 25px */
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      min-height: 495px; /* 5px shorter */
+      min-height: 490px; /* Reduced by 5px */
       overflow: hidden;
     }
 
@@ -269,7 +269,7 @@
       flex-grow: 1;
       border: none;
       border-radius: 12px;
-      margin-top: 12px;
+      margin-top: 10px; /* Moved up 2px from 12px to 10px */
     }
 
     footer {
@@ -324,7 +324,7 @@
 
     @media (min-width: 769px) {
       .details h2 {
-        margin-bottom: 17px; /* +5px space below title */
+        margin-bottom: 19px; /* Increased by 2px */
       }
     }
   </style>
@@ -399,10 +399,9 @@
       if (i === 1) slide.classList.add('active');
 
       const imageURL = `${i}.jpg`;
-      slide.innerHTML = `
-        <div class="blur-bg" style="background-image: url('${imageURL}');"></div>
-        <img src="${imageURL}" alt="Apartment photo ${i}" loading="lazy" />
-      `;
+      slide.innerHTML =
+        `<div class="blur-bg" style="background-image: url('${imageURL}');"></div>
+         <img src="${imageURL}" alt="Apartment photo ${i}" loading="lazy" />`;
       carousel.appendChild(slide);
       slides.push(slide);
     }
@@ -410,10 +409,9 @@
     let current = 0;
     const nav = document.createElement('div');
     nav.classList.add('carousel-controls');
-    nav.innerHTML = `
-      <button id="prev">&#10094;</button>
-      <button id="next">&#10095;</button>
-    `;
+    nav.innerHTML =
+      `<button id="prev">&#10094;</button>
+       <button id="next">&#10095;</button>`;
     carousel.appendChild(nav);
 
     document.getElementById('prev').onclick = () => {
