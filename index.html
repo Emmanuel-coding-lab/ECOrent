@@ -54,12 +54,12 @@
 
     .header-text h1 {
       margin: 0;
-      font-size: 2rem; /* back to original */
+      font-size: 2rem;
     }
 
     .header-text p {
       margin: 6px 0 0;
-      font-size: 1.1rem; /* back to original */
+      font-size: 1.1rem;
     }
 
     .header-contact {
@@ -83,16 +83,17 @@
       display: flex;
       gap: 40px;
       flex-wrap: wrap;
+      flex-direction: column;
     }
 
     .carousel, .details {
-      flex: 1 1 48%;
       background: var(--box-bg);
       padding: 32px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.07);
       box-sizing: border-box;
       position: relative;
+      width: 100%;
     }
 
     .price-tag {
@@ -107,16 +108,9 @@
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
-    
-    /* Fix mobile version */
-    @media (max-width: 768px) {
-      .price-tag {
-        position: relative;
-        display: inline-block;
-        float: right;
-        margin-bottom: 8px;
-        margin-top: -10px;
-      }
+
+    .mobile-price-tag {
+      display: none;
     }
 
     .carousel {
@@ -326,7 +320,6 @@
       .details,
       .contact-form,
       .map {
-        flex: 1 1 100%;
         width: 100%;
       }
 
@@ -335,18 +328,21 @@
         aspect-ratio: auto;
       }
 
-      .contact-form {
-        order: 2;
-      }
-
-      .map {
-        order: 1;
-      }
-
       .price-tag {
-        position: static;
-        margin-top: 12px;
-        display: inline-block;
+        display: none;
+      }
+
+      .mobile-price-tag {
+        display: block;
+        background: var(--primary);
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: center;
+        padding: 12px 20px;
+        border-radius: 10px;
+        margin: 24px 0 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
     }
   </style>
@@ -370,6 +366,10 @@
 
   <main>
     <div class="carousel" id="carousel"></div>
+
+    <!-- Mobile-specific price tag -->
+    <div class="mobile-price-tag">$2,400 / month</div>
+
     <div class="details">
       <span class="price-tag">$2,400 / month</span>
       <h2>Property Details</h2>
