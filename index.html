@@ -219,16 +219,16 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       box-sizing: border-box;
-      min-height: 440px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
     }
 
     .contact-form form {
       display: flex;
       flex-direction: column;
       gap: 12px;
+      flex-grow: 1;
+      margin-top: 10px; /* aligns with map title spacing */
     }
 
     .contact-form input,
@@ -251,6 +251,16 @@
 
     .contact-form button:hover {
       background: #239954;
+    }
+
+    .form-message {
+      margin-top: auto;
+      padding-top: 10px;
+      font-weight: 500;
+    }
+
+    .map {
+      min-height: 440px;
     }
 
     .map iframe {
@@ -306,6 +316,10 @@
         aspect-ratio: 4 / 3;
         height: auto;
       }
+
+      .map {
+        min-height: auto;
+      }
     }
   </style>
 </head>
@@ -359,7 +373,7 @@
         <input type="tel" name="phone" placeholder="Your Phone Number" />
         <textarea name="message" placeholder="Message" rows="5" required></textarea>
         <button type="submit">Send Message</button>
-        <p id="form-message" style="margin-top: 10px; font-weight: 500;"></p>
+        <p class="form-message" id="form-message"></p>
       </form>
     </div>
   </section>
