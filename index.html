@@ -26,7 +26,7 @@
     header {
       background: var(--dark);
       color: white;
-      padding: 28px 20px;
+      padding: 40px 20px; /* Increased height */
     }
 
     .header-container {
@@ -36,6 +36,7 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      gap: 12px;
     }
 
     .header-left {
@@ -51,11 +52,6 @@
       object-fit: cover;
       flex-shrink: 0;
     }
-    
-    .header-price .price-tag {
-      font-weight: 600;
-      font-size: 1.4rem;
-    }
 
     .header-text h1 {
       margin: 0;
@@ -67,23 +63,31 @@
       font-size: 1.1rem;
     }
 
-    .header-contact {
+    .header-info {
       text-align: right;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
     }
 
-    .header-contact a {
-      color: #ffffff;
-      text-decoration: none;
+    .header-info .price-tag {
+      font-weight: 600;
+      font-size: 1.4rem;
+      background: none;
+      color: white;
+      padding: 0;
+      box-shadow: none;
     }
 
-    .header-contact a:hover {
-      text-decoration: underline;
+    .header-info .phone {
+      font-size: 1.05rem;
     }
 
     main {
       max-width: 1200px;
-      margin: 55px auto 40px;
+      margin: 0 auto 40px; /* Removed top space */
       padding: 0 20px;
       display: flex;
       gap: 40px;
@@ -98,32 +102,6 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.07);
       box-sizing: border-box;
       position: relative;
-    }
-
-    .price-tag {
-      position: absolute;
-      top: 32px;
-      right: 32px;
-      background: var(--primary);
-      color: white;
-      font-size: 1.2rem;
-      font-weight: bold;
-      padding: 10px 16px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .mobile-inline-price {
-      display: none;
-      background: var(--primary);
-      color: white;
-      font-size: 1.2rem;
-      font-weight: bold;
-      text-align: center;
-      padding: 12px;
-      border-radius: 8px;
-      margin-top: 20px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
     .carousel {
@@ -312,9 +290,10 @@
         font-size: 1rem;
       }
 
-      .header-contact {
+      .header-info {
+        align-items: flex-start;
         text-align: left;
-        font-size: 0.95rem;
+        margin-top: 4px;
       }
 
       main, .extras {
@@ -334,14 +313,6 @@
         aspect-ratio: 4 / 3;
         height: auto;
       }
-
-      .price-tag {
-        display: none;
-      }
-
-      .mobile-inline-price {
-        display: block;
-      }
     }
   </style>
 </head>
@@ -355,8 +326,9 @@
           <p>Grand Rapids, MI</p>
         </div>
       </div>
-      <div class="header-price">
-        <span class="price-tag" style="position: static; box-shadow: none; font-size: 1.5rem; background: none; color: white; padding: 0;">$2,400 / month</span>
+      <div class="header-info">
+        <div class="price-tag">$2,400 / month</div>
+        <div class="phone">(123) 456-7890</div>
       </div>
     </div>
   </header>
