@@ -222,7 +222,7 @@
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      min-height: 500px;
+      min-height: 495px; /* 5px shorter */
       overflow: hidden;
     }
 
@@ -319,6 +319,12 @@
 
       .map {
         min-height: auto;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .details h2 {
+        margin-bottom: 17px; /* +5px space below title */
       }
     }
   </style>
