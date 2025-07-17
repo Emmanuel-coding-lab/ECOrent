@@ -181,7 +181,7 @@
       color: var(--details-title);
       margin-top: 0;
       font-size: 1.6rem;
-      margin-bottom: 19px;
+      margin-bottom: 21px; /* Increased 2px spacing */
     }
 
     .details ul {
@@ -284,7 +284,7 @@
 
     @media (min-width: 769px) {
       .details h2 {
-        margin-bottom: 20px;
+        margin-bottom: 21px; /* 2px more for desktop */
       }
     }
 
@@ -309,12 +309,13 @@
 
       main, .extras {
         flex-direction: column;
-        gap: 32px;
+        gap: 32px; /* consistent spacing between all boxes */
       }
 
       .carousel, .details, .contact-form, .map {
         flex: 1 1 100%;
         width: 100%;
+        margin-bottom: 32px; /* consistent spacing */
       }
 
       .carousel {
@@ -324,12 +325,16 @@
 
       .map {
         height: auto;
-        min-height: 400px;
-        margin-bottom: 20px;
+        min-height: 495px; /* Match .details height on mobile */
+        margin-bottom: 32px;
+      }
+
+      .map iframe {
+        min-height: 100%;
       }
 
       .form-message {
-        font-size: clamp(0.95rem, 2.5vw, 1rem);
+        font-size: clamp(0.95rem, 2.5vw, 1rem); /* slightly larger */
       }
     }
   </style>
