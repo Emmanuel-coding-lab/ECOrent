@@ -2,12 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>4BR Downtown Apartment for Rent</title>
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-
   <style>
     :root {
       --primary: #2ecc71;
@@ -28,7 +25,7 @@
     header {
       background: var(--dark);
       color: white;
-      padding: 16px 20px;
+      padding: 24px 20px;
     }
 
     .header-container {
@@ -55,17 +52,17 @@
 
     .header-text h1 {
       margin: 0;
-      font-size: 1.6rem;
+      font-size: 2rem;
     }
 
     .header-text p {
-      margin: 4px 0 0;
-      font-size: 1rem;
+      margin: 6px 0 0;
+      font-size: 1.1rem;
     }
 
     .header-contact {
       text-align: right;
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
 
     .header-contact a {
@@ -79,7 +76,7 @@
 
     main {
       max-width: 1200px;
-      margin: 40px auto;
+      margin: 60px auto 40px;
       padding: 0 20px;
       display: flex;
       gap: 40px;
@@ -89,7 +86,7 @@
     .carousel, .details {
       flex: 1 1 48%;
       background: var(--box-bg);
-      padding: 30px;
+      padding: 32px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.07);
       box-sizing: border-box;
@@ -100,6 +97,7 @@
       aspect-ratio: 4 / 3;
       min-height: 300px;
       background-color: #eee;
+      overflow: hidden;
     }
 
     .carousel-slide {
@@ -158,21 +156,37 @@
       border-radius: 5px;
     }
 
-    .details h2 {
+    .details h2,
+    .contact-form h2,
+    .map h2 {
       color: var(--details-title);
       margin-top: 0;
       font-size: 1.6rem;
     }
 
     .details ul {
-      padding-left: 20px;
+      padding-left: 0;
+      margin: 0;
     }
 
     .details li {
       margin-bottom: 12px;
       font-size: 1.1rem;
-      list-style-type: disc;
+      list-style: none;
     }
+
+    .details li::before {
+      content: '🏠 ';
+      margin-right: 6px;
+    }
+
+    .details li:nth-child(2)::before { content: '🛁 '; }
+    .details li:nth-child(3)::before { content: '📏 '; }
+    .details li:nth-child(4)::before { content: '💧 '; }
+    .details li:nth-child(5)::before { content: '🐾 '; }
+    .details li:nth-child(6)::before { content: '🧺 '; }
+    .details li:nth-child(7)::before { content: '📍 '; }
+    .details li:nth-child(8)::before { content: '🚗 '; }
 
     .extras {
       max-width: 1200px;
@@ -190,11 +204,6 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       box-sizing: border-box;
-    }
-
-    .contact-form h2, .map h2 {
-      margin-top: 0;
-      font-size: 1.4rem;
     }
 
     .contact-form form {
@@ -231,8 +240,9 @@
     footer {
       text-align: center;
       padding: 20px;
-      color: var(--gray);
-      font-size: 0.9rem;
+      background-color: #e1e1e1;
+      color: var(--dark);
+      font-size: 0.95rem;
     }
   </style>
 </head>
@@ -282,7 +292,7 @@
       </form>
     </div>
     <div class="map">
-      <h2>Find Us</h2>
+      <h2>Location & Directions</h2>
       <iframe src="https://maps.google.com/maps?q=135+Straight+NW,+Grand+Rapids,+MI&output=embed"></iframe>
     </div>
   </section>
