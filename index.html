@@ -181,6 +181,7 @@
       color: var(--details-title);
       margin-top: 0;
       font-size: 1.6rem;
+      margin-bottom: 12px;
     }
 
     .details ul {
@@ -221,6 +222,8 @@
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
+      min-height: 500px;
+      overflow: hidden;
     }
 
     .contact-form form {
@@ -228,7 +231,7 @@
       flex-direction: column;
       gap: 12px;
       flex-grow: 1;
-      margin-top: 10px; /* aligns with map title spacing */
+      margin-top: 0;
     }
 
     .contact-form input,
@@ -257,10 +260,7 @@
       margin-top: auto;
       padding-top: 10px;
       font-weight: 500;
-    }
-
-    .map {
-      min-height: 440px;
+      min-height: 24px;
     }
 
     .map iframe {
@@ -383,7 +383,6 @@
   </footer>
 
   <script>
-    // Carousel Logic
     const imageCount = 8;
     const carousel = document.getElementById('carousel');
     const slides = [];
@@ -423,7 +422,6 @@
       slides[current].classList.add('active');
     };
 
-    // Form Submission
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
