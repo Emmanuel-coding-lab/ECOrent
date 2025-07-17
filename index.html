@@ -6,6 +6,7 @@
   <title>4BR Downtown Apartment for Rent</title>
   <link rel="icon" type="image/jpeg" href="favicon.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     :root {
       --primary: #27ae60;
@@ -26,7 +27,7 @@
     header {
       background: var(--dark);
       color: white;
-      padding: 40px 20px; /* Increased height */
+      padding: 40px 20px;
     }
 
     .header-container {
@@ -81,13 +82,18 @@
       box-shadow: none;
     }
 
-    .header-info .phone {
-      font-size: 1.05rem;
+    .header-info .phone a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .header-info .phone a:hover {
+      text-decoration: underline;
     }
 
     main {
       max-width: 1200px;
-      margin: 50px auto 40px; /* Removed top space */
+      margin: 0 auto 40px;
       padding: 0 20px;
       display: flex;
       gap: 40px;
@@ -197,20 +203,15 @@
       margin-bottom: 12px;
       font-size: clamp(1rem, 2.8vw, 1.1rem);
       list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .details li::before {
-      content: '🏠 ';
-      margin-right: 6px;
+    .details li i {
+      color: var(--primary);
+      min-width: 20px;
     }
-
-    .details li:nth-child(2)::before { content: '🛁 '; }
-    .details li:nth-child(3)::before { content: '📏 '; }
-    .details li:nth-child(4)::before { content: '💧 '; }
-    .details li:nth-child(5)::before { content: '🐾 '; }
-    .details li:nth-child(6)::before { content: '🧺 '; }
-    .details li:nth-child(7)::before { content: '📍 '; }
-    .details li:nth-child(8)::before { content: '🚗 '; }
 
     .extras {
       max-width: 1200px;
@@ -273,7 +274,6 @@
       font-size: 0.95rem;
     }
 
-    /* ---------- MOBILE FIXES ---------- */
     @media (max-width: 768px) {
       .header-container {
         flex-direction: column;
@@ -328,7 +328,7 @@
       </div>
       <div class="header-info">
         <div class="price-tag">$2,400 / month</div>
-        <div class="phone">(123) 456-7890</div>
+        <div class="phone"><a href="tel:1234567890">(123) 456-7890</a></div>
       </div>
     </div>
   </header>
@@ -338,14 +338,14 @@
     <div class="details">
       <h2>Property Details</h2>
       <ul>
-        <li>4 Bedrooms</li>
-        <li>1 Bathroom</li>
-        <li>1,200 sq ft</li>
-        <li>Water & gas included</li>
-        <li>Pet-friendly</li>
-        <li>In-unit washer & dryer</li>
-        <li>135 Straight NW, Grand Rapids, MI</li>
-        <li>Street parking available</li>
+        <li><i class="fas fa-bed"></i>4 Bedrooms</li>
+        <li><i class="fas fa-bath"></i>1 Bathroom</li>
+        <li><i class="fas fa-ruler-combined"></i>1,200 sq ft</li>
+        <li><i class="fas fa-tint"></i>Water & gas included</li>
+        <li><i class="fas fa-dog"></i>Pet-friendly</li>
+        <li><i class="fas fa-soap"></i>In-unit washer & dryer</li>
+        <li><i class="fas fa-map-marker-alt"></i><a href="https://maps.google.com/?q=135+Straight+NW,+Grand+Rapids,+MI" target="_blank" style="color: inherit; text-decoration: underline;">135 Straight NW, Grand Rapids, MI</a></li>
+        <li><i class="fas fa-car"></i>Street parking available</li>
       </ul>
     </div>
   </main>
@@ -384,7 +384,7 @@
       const imageURL = `${i}.jpg`;
       slide.innerHTML = `
         <div class="blur-bg" style="background-image: url('${imageURL}');"></div>
-        <img src="${imageURL}" alt="Apartment photo ${i}" />
+        <img src="${imageURL}" alt="Apartment photo ${i}" loading="lazy" />
       `;
       carousel.appendChild(slide);
       slides.push(slide);
