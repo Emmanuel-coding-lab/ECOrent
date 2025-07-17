@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --primary: #2ecc71;
+      --primary: #27ae60;
       --dark: #2c3e50;
       --light: #f8f9fa;
       --gray: #888;
@@ -111,10 +111,11 @@
     /* Fix mobile version */
     @media (max-width: 768px) {
       .price-tag {
-        position: static;
-        margin-top: 16px;
-        margin-bottom: 16px;
+        position: relative;
         display: inline-block;
+        float: right;
+        margin-bottom: 8px;
+        margin-top: -10px;
       }
     }
 
@@ -269,6 +270,10 @@
       font-size: 1rem;
       border-radius: 6px;
       cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background: #239954;
     }
 
     .map iframe {
