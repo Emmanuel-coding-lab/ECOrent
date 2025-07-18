@@ -181,7 +181,7 @@
       color: var(--details-title);
       margin-top: 0;
       font-size: 1.6rem;
-      margin-bottom: 21px; /* Increased 2px spacing */
+      margin-bottom: 21px;
     }
 
     .details ul {
@@ -224,6 +224,10 @@
       display: flex;
       flex-direction: column;
       height: 495px;
+    }
+
+    .map {
+      padding-right: 40px; /* Matches gap between boxes on desktop */
     }
 
     .map iframe {
@@ -284,7 +288,7 @@
 
     @media (min-width: 769px) {
       .details h2 {
-        margin-bottom: 21px; /* 2px more for desktop */
+        margin-bottom: 21px;
       }
     }
 
@@ -309,32 +313,26 @@
 
       main, .extras {
         flex-direction: column;
-        gap: 32px; /* consistent spacing between all boxes */
+        gap: 16px; /* cut in half from 32px */
       }
 
       .carousel, .details, .contact-form, .map {
         flex: 1 1 100%;
         width: 100%;
-        margin-bottom: 32px; /* consistent spacing */
-      }
-
-      .carousel {
-        aspect-ratio: 4 / 3;
-        height: auto;
+        margin-bottom: 16px; /* cut in half */
       }
 
       .map {
-        height: auto;
-        min-height: 495px; /* Match .details height on mobile */
-        margin-bottom: 32px;
+        min-height: 495px;
+        margin-bottom: 19px; /* 60% of original 32px */
       }
 
-      .map iframe {
-        min-height: 100%;
+      .contact-form {
+        margin-bottom: 19px; /* 60% of original 32px */
       }
 
       .form-message {
-        font-size: clamp(0.95rem, 2.5vw, 1rem); /* slightly larger */
+        font-size: clamp(0.95rem, 2.5vw, 1rem);
       }
     }
   </style>
