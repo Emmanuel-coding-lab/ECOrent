@@ -325,14 +325,15 @@
     
       .map {
         height: 800px !important;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+        display: block; /* ← Remove flex behavior */
       }
-      
+    
       .map iframe {
         height: 100% !important;
-        flex-grow: 1;
+        width: 100%;
+        display: block;
+        border: none;
+        border-radius: 12px;
       }
 
       .map h2 {
