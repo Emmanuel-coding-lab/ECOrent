@@ -206,7 +206,7 @@
 
     .extras {
       max-width: 1200px;
-      margin: 40px auto 33px; /* reduced from 55px to 33px for mobile */
+      margin: 40px auto 55px;
       padding: 0 20px;
       display: flex;
       gap: 40px;
@@ -227,7 +227,7 @@
     }
 
     .map {
-      padding-bottom: 40px; /* matches right spacing */
+      padding-bottom: 40px; /* ADDED FOR DESKTOP spacing balance */
     }
 
     .map iframe {
@@ -286,6 +286,12 @@
     .mobile-only { display: none; }
     .desktop-only { display: inline; }
 
+    @media (min-width: 769px) {
+      .details h2 {
+        margin-bottom: 21px;
+      }
+    }
+
     @media (max-width: 768px) {
       .mobile-only { display: inline; }
       .desktop-only { display: none; }
@@ -307,18 +313,13 @@
 
       main, .extras {
         flex-direction: column;
-        gap: 16px; /* halved spacing between boxes */
+        gap: 16px; /* REDUCED spacing */
       }
 
       .carousel, .details, .contact-form, .map {
         flex: 1 1 100%;
         width: 100%;
-        margin-bottom: 16px; /* halved spacing */
-      }
-
-      .carousel {
-        aspect-ratio: 4 / 3;
-        height: auto;
+        margin-bottom: 16px; /* REDUCED spacing */
       }
 
       .map {
@@ -331,12 +332,12 @@
         min-height: 100%;
       }
 
-      .form-message {
-        font-size: clamp(0.95rem, 2.5vw, 1rem);
+      .contact-form {
+        margin-bottom: 19px; /* REDUCED space before footer */
       }
 
-      .extras {
-        margin-bottom: 33px; /* 60% of 55px */
+      .form-message {
+        font-size: clamp(0.95rem, 2.5vw, 1rem);
       }
     }
   </style>
@@ -411,9 +412,10 @@
       if (i === 1) slide.classList.add('active');
 
       const imageURL = `${i}.jpg`;
-      slide.innerHTML =
-        `<div class="blur-bg" style="background-image: url('${imageURL}');"></div>
-         <img src="${imageURL}" alt="Apartment photo ${i}" loading="lazy" />`;
+      slide.innerHTML = `
+        <div class="blur-bg" style="background-image: url('${imageURL}');"></div>
+        <img src="${imageURL}" alt="Apartment photo ${i}" loading="lazy" />
+      `;
       carousel.appendChild(slide);
       slides.push(slide);
     }
@@ -421,9 +423,10 @@
     let current = 0;
     const nav = document.createElement('div');
     nav.classList.add('carousel-controls');
-    nav.innerHTML =
-      `<button id="prev">&#10094;</button>
-       <button id="next">&#10095;</button>`;
+    nav.innerHTML = `
+      <button id="prev">&#10094;</button>
+      <button id="next">&#10095;</button>
+    `;
     carousel.appendChild(nav);
 
     document.getElementById('prev').onclick = () => {
