@@ -206,7 +206,7 @@
 
     .extras {
       max-width: 1200px;
-      margin: 40px auto 55px;
+      margin: 40px auto 33px; /* reduced from 55px to 33px for mobile */
       padding: 0 20px;
       display: flex;
       gap: 40px;
@@ -227,7 +227,7 @@
     }
 
     .map {
-      padding-right: 40px; /* Matches gap between boxes on desktop */
+      padding-bottom: 40px; /* matches right spacing */
     }
 
     .map iframe {
@@ -286,12 +286,6 @@
     .mobile-only { display: none; }
     .desktop-only { display: inline; }
 
-    @media (min-width: 769px) {
-      .details h2 {
-        margin-bottom: 21px;
-      }
-    }
-
     @media (max-width: 768px) {
       .mobile-only { display: inline; }
       .desktop-only { display: none; }
@@ -313,26 +307,36 @@
 
       main, .extras {
         flex-direction: column;
-        gap: 16px; /* cut in half from 32px */
+        gap: 16px; /* halved spacing between boxes */
       }
 
       .carousel, .details, .contact-form, .map {
         flex: 1 1 100%;
         width: 100%;
-        margin-bottom: 16px; /* cut in half */
+        margin-bottom: 16px; /* halved spacing */
+      }
+
+      .carousel {
+        aspect-ratio: 4 / 3;
+        height: auto;
       }
 
       .map {
+        height: auto;
         min-height: 495px;
-        margin-bottom: 19px; /* 60% of original 32px */
+        margin-bottom: 16px;
       }
 
-      .contact-form {
-        margin-bottom: 19px; /* 60% of original 32px */
+      .map iframe {
+        min-height: 100%;
       }
 
       .form-message {
         font-size: clamp(0.95rem, 2.5vw, 1rem);
+      }
+
+      .extras {
+        margin-bottom: 33px; /* 60% of 55px */
       }
     }
   </style>
