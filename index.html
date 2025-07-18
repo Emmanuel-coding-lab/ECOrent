@@ -324,7 +324,7 @@
       }
     
       .map {
-        height: 500px; 
+        height: 450px; /* Adjust as needed */
         padding: 25px;
         box-sizing: border-box;
         display: flex;
@@ -333,9 +333,8 @@
       }
     
       .map iframe {
+        height: 100%;
         flex-grow: 1;
-        height: auto;
-        min-height: 0;
       }
     
       .contact-form {
@@ -474,25 +473,6 @@
         messageEl.style.color = "red";
       }
     });
-
-    // ➕ Add height match for mobile
-    function matchMapHeightToDetails() {
-      const details = document.querySelector('.details');
-      const map = document.querySelector('.map');
-  
-      if (details && map) {
-        if (window.innerWidth <= 768) {
-          const targetHeight = details.offsetHeight;
-          map.style.height = `${targetHeight}px`;
-        } else {
-          map.style.height = ''; // Reset for desktop
-        }
-      }
-    }
-  
-    window.addEventListener('load', matchMapHeightToDetails);
-    window.addEventListener('resize', matchMapHeightToDetails);
-
   </script>
 </body>
 </html>
